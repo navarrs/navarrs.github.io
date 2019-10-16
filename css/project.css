@@ -48,15 +48,94 @@
 	transform: lowercase;
 }
 
-.icon_star {
-	background-image: url( '../data/img/star.svg');
-	opacity: 0.70;
-	background-repeat: no-repeat;
-	padding-right: 1rem;
-	float: right;
+/* new */
+
+.card {
+  display: flex;
+  min-height: 280px;
+  width: 100%;
+  background-color: #17141d; 
+  border-radius: 1px;
+  box-shadow: -1rem 0 3rem #000;
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
 }
 
-.icon_star span {
-	text-align: right;
-	float: right;
+.card img {
+	min-height: 100px;
+	background-color: #eee;
+	width: 100%;
+	max-width: 100%;
+	display: block;
+}
+
+.card:hover img {
+	visibility: hidden;
+	transition: 0.2s ease-out;
+}
+
+.card:not(:first-child) {
+    margin-left: -50px;
+}
+
+.card:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+}
+
+.card:hover .content {
+	transition: 0.4s ease-out;
+	visibility: visible;
+}
+
+.card:hover .card_title {
+	transition: 0.4s ease-out;
+	visibility: visible;
+}
+
+.content {
+	color: white;
+  font-weight: 300;
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  visibility: hidden;
+  text-align: center;
+}
+
+.card:hover ~ .card {
+  position: relative;
+  left: 50px;
+  transition: 0.4s ease-out;
+}
+
+.card_title {
+  color: white;
+  font-weight: 300;
+  visibility: hidden;
+  text-align: center;
+
+  width: 50%; /*can be in percentage also.*/
+  /*margin: 0 auto;*/
+  padding: 10px;
+  position: relative;
+}
+
+
+.stroke {
+  stroke: white;
+  stroke-dasharray: 360;
+  stroke-dashoffset: 360;
+  transition: 0.6s ease-out;
+}
+
+svg {
+  fill: #17141d;
+  stroke-width: 2px;
+}
+
+.card:hover .stroke {
+  stroke-dashoffset: 100;
+  transition: 0.6s ease-out;
 }

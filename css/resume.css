@@ -7,13 +7,15 @@
 body {
  	font-family:Muli,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
  	padding-top:54px;
- 	color:#868e96
+ 	color:#868e96;
+ 	background-color: #100e17;
 }
 
 @media(min-width:992px) {
  	body {
  		padding-top:0;
- 		padding-left:35rem
+ 		/* Pads text to left */
+ 		padding-left:25rem 
  	}
 }
 
@@ -104,7 +106,9 @@ p.lead{
 		-webkit-box-direction:normal;
 		-ms-flex-direction:column;
 		flex-direction:column;
-		width:34rem;
+
+		/* Reduce side nav width*/
+		width:25rem;
 		height:100vh
 	}
 	
@@ -168,7 +172,7 @@ section.resume-section .resume-item .resume-date{
 		min-height:100vh
 	}
 	section.resume-section .resume-item .resume-date{
-		min-width:30rem
+		min-width:10rem
 	}
 }
 
