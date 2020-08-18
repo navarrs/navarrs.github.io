@@ -202,3 +202,9 @@ a{
 a:active,a:focus,a:hover{
 	color:#824027
 }
+
+.right {
+  position: absolute;
+  right: 90%;
+  padding: 10px;
+}
