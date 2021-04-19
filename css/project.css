@@ -101,3 +101,7 @@ svg {
   stroke-dashoffset: 100;
   transition: 0.6s ease-out;
 }
+
+.space_bottom {
+  margin-bottom: 30px; 
+}
