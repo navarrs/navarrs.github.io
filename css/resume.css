@@ -96,6 +96,23 @@ p.lead{
 	outline-color:#d48a6e
 }
 
+.grid-wrapper{
+	display:grid;
+	grid-gap:10px;
+	justify-content:center;
+	grid-template-columns:repeat(auto-fit, minmax(200px, 1fr))
+}
+
+.profile img{
+	box-shadow:0 0 5px #828282;width:90%}
+
+.small-rule{
+	width:100%;
+	border-top:1px 
+	solid;
+	text-align:center
+}
+
 @media (min-width:992px){
 	#sideNav{
 		text-align:center;
