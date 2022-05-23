@@ -213,6 +213,13 @@ section.resume-section .resume-item .resume-date{
 	color:#A16383 !important
 }
 
+.abstract{
+	color:#A16383 !important
+}
+.abstract:hover {
+	background-color:#cbbace
+}
+
 a{
 	color:#A16383
 }
