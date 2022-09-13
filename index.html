@@ -73,12 +73,12 @@
           <span class="text-primary">Navarro</span>
         </h2>
         <p class="lead mb-5"> 
-        I'm a robotics graduate student at Carnegie Mellon University (CMU). 
+        I received a Masters in Robotics from Carnegie Mellon University in 2022, and I'm currently pursuing my PhD in Robotics also at CMU. 
         </p>
         <p class="lead mb-5">
         I have experience working in computer vision, autonomous mobile robots and robot manipulators for medical robotics.
         Some of my research interests include robot navigation and multimodal learning.
-        I'm currently a member of the Bot Intelligence Group (BIG) at CMU doing research in Embodied AI and Social Robotics.
+        I'm currently a member of the Bot Intelligence Group (BIG) at CMU doing research in Multimodal Embodied AI and Social Robot Navigation.
         </p>
         <p class="lead mb-5"> 
         As an undergrad, I participated twice at the <a href="https://riss.ri.cmu.edu">Robotics Institute Summer Scholars (RISS) </a> 
@@ -114,6 +114,55 @@
 
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
+            <a href="https://www.ri.cmu.edu/app/uploads/2022/08/MSR_Thesis.pdf">
+              <img src="data/img/publications/sprnn.png">
+            </a>
+          </div>
+          <div style="grid-column: span 3;">
+            <h3 class="mb-0">Social-PatteRNN: Socially-Aware Trajectory Prediction Guided by Motion Patterns</h3>
+            <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
+              <b class="text-primary">Ingrid Navarro</b> and Jean Oh
+            </p>
+            <p style="margin-top:0px;"><i>To Appear: In proceedings of IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2022. </i></p>
+          
+            <div class="center">
+              <p>
+                [<a class="link" href="https://www.ri.cmu.edu/app/uploads/2022/08/MSR_Thesis.pdf">Paper</a> | <a class="link" href="https://github.com/cmubig/social-patternn">Code</a>]
+              </p>
+            </div>
+
+            <div onclick="show_abstract('paper_evlp')">
+              <b class="abstract">Show/Hide Abstract</b>
+            </div>
+            
+            <div id="paper_evlp" style="display:none;">
+              <p class="lead mb-5" align="justify">
+                As intelligent robots across domains start collaborating with humans in shared environments, 
+                <i>e.g.</i>, urban settings and airspace, algorithms that enable them to reason over human motion 
+                and intent are important to ensure seamless and safe interplay. Even beyond robotics, other domains,
+                <i>e.g.</i>, surveillance and sports analysis, may also benefit from this type of algorithms.
+
+                In our work, we study human intent by focusing on the problem of predicting trajectories in 
+                dynamic environments. We are further interested in designing methods that are able to 
+                generalize across domains. Specifically, we target domains where navigation guidelines 
+                are relatively strictly defined yet not necessarily marked in their physical environments. 
+                We hypothesize that within these domains, in the short-term, agents tend to exhibit motion 
+                patterns that reveal important context information related to the agent's general direction,
+                admissible motions, intermediate goals and social influences. From this intuition, we propose 
+                <i>Social-PatteRNN</i>, a new recurrent generative model that exploits motion patterns to encode
+                the aforesaid context information and use it as conditioning signal for predicting trajectories. 
+                We assess our approach across three different problem domains: human motion in crowds, human 
+                motion in sports and aircraft motion in terminal airspace. Finally, we show that our approach 
+                achieves state-of-the-art results across these domains.
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="small-rule" />
+
+        <div class="grid-wrapper">
+          <div class="profile center" style="grid-column: span 2; margin:auto;">
             <a href="https://arxiv.org/abs/2106.13948">
               <img src="data/img/publications/evlp.png">
             </a>
@@ -124,12 +173,11 @@
               Jonathan Francis, Nariaki Kitamura, Felix Labelle, Xiaopen Lu, 
               <b class="text-primary">Ingrid Navarro</b> and Jean Oh
             </p>
-            <p style="margin-top:0px;"><i>Preprint, Accepted for publication in the 
-              Journal of Artificial Intelligence Research (JAIR), 2022</i></p>
-            
+            <p style="margin-top:0px;"><i>Journal of Artificial Intelligence Research (JAIR), 2022</i></p>
+          
             <div class="center">
               <p>
-                [<a class="link" href="https://arxiv.org/abs/2106.13948">Paper</a>]
+                [<a class="link" href="https://jair.org/index.php/jair/article/view/13646/26807">Paper</a>]
               </p>
             </div>
 
