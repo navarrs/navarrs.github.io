@@ -111,11 +111,96 @@
       <div class="container">
 
         <h2 class="mb-3">Research Projects</h2>
+        
+        <div class="grid-wrapper">
+          <div class="profile center" style="grid-column: span 2; margin:auto;">
+            <a href="https://arxiv.org/pdf/2212.11345.pdf">
+              <img src="data/img/publications/ksaven.gif">
+            </a>
+          </div>
+          <div style="grid-column: span 3;">
+            <h3 class="mb-0">Knowledge-driven Scene Priors for Semantic Audio-Visual Embodied Navigation</h3>
+            <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
+              Gyan Tatiya, Jonathan Francis, Luca Bondi, <b class="text-primary">Ingrid Navarro</b>, Eric Nyberg, Jivko Sinapov, and Jean Oh
+            </p>
+            <p style="margin-top:0px;"><i>In ArXiv, 2022. </i></p>
+          
+            <div class="center">
+              <p>
+                [<a class="link" href="https://arxiv.org/pdf/2212.11345.pdf">Paper</a>]
+              </p>
+            </div>
+
+            <div onclick="show_abstract('paper_ksven')">
+              <b class="abstract">Show/Hide Abstract</b>
+            </div>
+            
+            <div id="paper_ksven" style="display:none;">
+              <p class="lead mb-5" align="justify">
+                Generalisation to unseen contexts remains a challenge for embodied navigation agents. 
+                In the context of semantic audio-visual navigation (SAVi) tasks, the notion of generalisation should include both generalising 
+                to unseen indoor visual scenes as well as generalising to unheard sounding objects. However, previous SAVi task definitions 
+                do not include evaluation conditions on truly novel sounding objects, resorting instead to evaluating agents on unheard sound 
+                clips of known objects; meanwhile, previous SAVi methods do not include explicit mechanisms for incorporating domain knowledge 
+                about object and region semantics. These weaknesses limit the development and assessment of models' abilities to generalise their 
+                learned experience. In this work, we introduce the use of knowledge-driven scene priors in the semantic audio-visual embodied 
+                navigation task: we combine semantic information from our novel knowledge graph that encodes object-region relations, spatial 
+                knowledge from dual Graph Encoder Networks, and background knowledge from a series of pre-training tasks -- all within a 
+                reinforcement learning framework for audio-visual navigation. We also define a new audio-visual navigation sub-task, where 
+                agents are evaluated on novel sounding objects, as opposed to unheard clips of known objects. We show improvements over strong 
+                baselines in generalisation to unseen regions and novel sounding objects, within the Habitat-Matterport3D simulation environment, 
+                under the SoundSpaces task.
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="small-rule" />
+
+        <div class="grid-wrapper">
+          <div class="profile center" style="grid-column: span 2; margin:auto;">
+            <a href="https://arxiv.org/pdf/2211.06932.pdf">
+              <img src="data/img/publications/chuav.png">
+            </a>
+          </div>
+          <div style="grid-column: span 3;">
+            <h3 class="mb-0">Challenges in Close-Proximity Safe and Seamless Operation of Manned and Unmanned Aircraft in Shared Airspace</h3>
+            <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
+              Jay Patrikar, Joao P. A. Dantas, Sourish Ghosh, Parv Kapoor, Ian Higgins, Jasmine J. Aloor, <b class="text-primary">Ingrid Navarro</b>, Jimin Sun, Ben Stoler, Milad Hamidi, Rohan Baijal, Brady Moon, Jean Oh, Sebastian Scherer
+            </p>
+            <p style="margin-top:0px;"><i>In Aerial Robotics Workshop at the International Conference on Robotics and Automation (ICRA), 2022. </i></p>
+          
+            <div class="center">
+              <p>
+                [<a class="link" href="https://arxiv.org/pdf/2211.06932.pdf">Paper</a>]
+              </p>
+            </div>
+
+            <div onclick="show_abstract('paper_chuav')">
+              <b class="abstract">Show/Hide Abstract</b>
+            </div>
+            
+            <div id="paper_chuav" style="display:none;">
+              <p class="lead mb-5" align="justify">
+                We propose developing an integrated system to keep autonomous unmanned aircraft safely separated and behave as expected in conjunction with 
+                manned traffic. The main goal is to achieve safe manned-unmanned vehicle teaming to improve system performance, have each (robot/human) 
+                teammate learn from each other in various aircraft operations, and reduce the manning needs of manned aircraft. The proposed system anticipates 
+                and reacts to other aircraft using natural language instructions and can serve as a co-pilot or operate entirely autonomously. We point out the 
+                main technical challenges where improvements on current state-of-the-art are needed to enable Visual Flight Rules to fully autonomous aerial operations, 
+                bringing insights to these critical areas. Furthermore, we present an interactive demonstration in a prototypical scenario with one AI pilot 
+                and one human pilot sharing the same terminal airspace, interacting with each other using language, and landing safely on the same runway.
+                We also show a demonstration of a vision-only aircraft detection system.
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="small-rule" />
 
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
             <a href="https://www.ri.cmu.edu/app/uploads/2022/08/MSR_Thesis.pdf">
-              <img src="data/img/publications/sprnn.png">
+              <img src="data/img/publications/sprnn.gif">
             </a>
           </div>
           <div style="grid-column: span 3;">
@@ -123,7 +208,7 @@
             <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
               <b class="text-primary">Ingrid Navarro</b> and Jean Oh
             </p>
-            <p style="margin-top:0px;"><i>To Appear: In proceedings of IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2022. </i></p>
+            <p style="margin-top:0px;"><i>In proceedings of IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2022. </i></p>
           
             <div class="center">
               <p>
@@ -131,11 +216,11 @@
               </p>
             </div>
 
-            <div onclick="show_abstract('paper_evlp')">
+            <div onclick="show_abstract('paper_sprnn')">
               <b class="abstract">Show/Hide Abstract</b>
             </div>
             
-            <div id="paper_evlp" style="display:none;">
+            <div id="paper_sprnn" style="display:none;">
               <p class="lead mb-5" align="justify">
                 As intelligent robots across domains start collaborating with humans in shared environments, 
                 <i>e.g.</i>, urban settings and airspace, algorithms that enable them to reason over human motion 
