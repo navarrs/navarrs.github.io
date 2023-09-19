@@ -72,29 +72,16 @@
         </h2>
         <p class="lead mb-5"> 
         I received a Masters in Robotics from Carnegie Mellon University (CMU) in 2022, and I'm currently 
-        pursuing my PhD in Robotics also at CMU. I'm advised by <a href="https://www.cs.cmu.edu/~./jeanoh/">Jean Oh</a>, 
-        head of the <a href="https://www.cs.cmu.edu/~./jeanoh/big/">roBot Intelligence Group (BIG)</a>. 
+        pursuing my PhD in Robotics also at CMU. I'm advised by <a href="https://cmubig.github.io/team/jean_oh/">Jean Oh</a>, 
+        head of the <a href="https://cmubig.github.io">roBot Intelligence Group (BIG)</a>. 
         </p>
         <p class="lead mb-5">
-          My research interests lie under the umbrella of social robot navigation and multimodal embodied 
-          navigation. I've worked on socially-aware motion prediction and navigation in multi-agent environments 
-          such as pedestrian settings, urban driving, ground traffic in airports and navigation in airspace. 
+          My research interests lie under the umbrella of social robot navigation and multimodal embodied navigation. 
+          I've worked on socially-aware motion prediction and navigation in multi-agent environments 
+          such as pedestrian settings, urban driving, ground traffic in airports and navigation in non-towered airspace. 
           I've also worked on Vison-and-Language Navigation (VLN) and Audio-Visual Navigation (AVN), both 
           for indoor navigation. 
         </p>
-
-        <!-- <p class="lead mb-5">
-          I've work experience in computer vision, autonomous mobile robots and robot manipulators 
-          for medical robotics.
-        </p>
-
-        <p class="lead mb-5"> 
-        As an undergrad, I participated twice at the <a href="https://riss.ri.cmu.edu">Robotics Institute 
-          Summer Scholars (RISS) </a> program, also at CMU, where I joined the Navigation Laboratory 
-          (Navlab) and did research on <a href="https://riss.ri.cmu.edu/wp-content/uploads/2017/09/2017-RISS-Poster-KWAN-Kevin-NAVARRO-Ingrid.pdf">object detection systems (2017)</a> 
-        and <a href="https://riss.ri.cmu.edu/wp-content/uploads/2018/11/2018-RISS-Poster-NAVARRO-Ingrid.pdf"> semantic segmentation of 3D LiDAR point 
-          clouds (2018)</a>.
-        </p> -->
 
         <div class="social-icons">
           <a href="https://www.linkedin.com/in/ingridnavarroan/">
@@ -117,6 +104,51 @@
       <div class="container">
 
         <h2 class="mb-3">Publications</h2>
+
+        <div class="grid-wrapper">
+          <div class="profile center" style="grid-column: span 2; margin:auto;">
+            <a href="https://arxiv.org/pdf/2304.01428.pdf">
+              <img src="data/img/publications/safeshift.png">
+            </a>
+          </div>
+          <div style="grid-column: span 3;">
+            <h4 class="mb-0">SafeShift: Safety-Informed Distribution Shift for Robust Trajectory Prediction in Autonomous Driving</h4>
+            <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
+              Benjamin Stoler*, <b class="text-primary">Ingrid Navarro*</b>, Meghdeep Jana, Soonmin Hwang, Jonathan Francis, and Jean Oh
+            </p>
+            <p style="margin-top:0px;"><i>* Equal contribution. </i></p>
+            <p style="margin-top:0px;"><i>Preprint in ArXiv (Under review). </i></p>
+          
+            <div class="center">
+              <p>
+                [ <a class="link" href="https://arxiv.org/pdf/2309.08889.pdf">Paper</a> 
+                | <a class="link" href="https://github.com/cmubig/SafeShift">Code</a>  
+                <!-- | <a class="link" href="https://youtu.be/PBE3O4cW2rI">Video</a> -->
+                 ]
+              </p>
+            </div>
+
+            <div onclick="show_abstract('paper_sorts')">
+              <b class="abstract">Toggle Abstract</b>
+            </div>
+            
+            <div id="paper_sorts" style="display:none;">
+              <p class="lead mb-5" align="justify">
+                As autonomous driving technology matures, safety and robustness of its key components, including trajectory 
+                prediction, is vital. Though real-world datasets, such as Waymo Open Motion, provide realistic recorded scenarios 
+                for model development, they often lack truly safety-critical situations. Rather than utilizing unrealistic 
+                simulation or dangerous realworld testing, we instead propose a framework to characterize such datasets and find 
+                hidden safety-relevant scenarios within. Our approach expands the spectrum of safety-relevance, allowing us to study 
+                trajectory prediction models under a safetyinformed, distribution shift setting. We contribute a generalized scenario 
+                characterization method, a novel scoring scheme to find subtly-avoided risky scenarios and an evaluation of trajectory 
+                prediction models in this setting. We further contribute a remediation strategy, achieving a 10% average reduction in
+                 prediction collision rates. To facilitate future research, we release our code to the public: github.com/cmubig/SafeShift
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="small-rule" />
         
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
@@ -129,6 +161,7 @@
             <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
               <b class="text-primary">Ingrid Navarro*</b>, Jay Patrikar*, Joao P. A. Dantas, Rohan Baijal, Ian Higgins, Sebastian Scherer, and Jean Oh
             </p>
+            <p style="margin-top:0px;"><i>* Equal contribution. </i></p>
             <p style="margin-top:0px;"><i>Preprint in ArXiv (Under review). </i></p>
           
             <div class="center">
@@ -314,9 +347,10 @@
           <div style="grid-column: span 3;">
             <h4 class="mb-0">Core Challenges in Embodied Vision-Language Planning</h4>
             <p class="blue" style="margin-top:0px; margin-bottom:0px;">
-              Jonathan Francis, Nariaki Kitamura, Felix Labelle, Xiaopen Lu, 
-              <b class="text-primary">Ingrid Navarro</b> and Jean Oh
+              Jonathan Francis*, Nariaki Kitamura*, Felix Labelle*, Xiaopen Lu*, 
+              <b class="text-primary">Ingrid Navarro*</b> and Jean Oh
             </p>
+            <p style="margin-top:0px;"><i>* Equal contribution. </i></p>
             <p style="margin-top:0px;"><i>Journal of Artificial Intelligence Research (JAIR), 2022</i></p>
           
             <div class="center">
