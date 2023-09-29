@@ -107,7 +107,7 @@
 
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
-            <a href="https://arxiv.org/pdf/2304.01428.pdf">
+            <a href="https://arxiv.org/pdf/2309.08889.pdf">
               <img src="data/img/publications/safeshift.png">
             </a>
           </div>
@@ -128,11 +128,11 @@
               </p>
             </div>
 
-            <div onclick="show_abstract('paper_sorts')">
+            <div onclick="show_abstract('paper_safeshift')">
               <b class="abstract">Toggle Abstract</b>
             </div>
             
-            <div id="paper_sorts" style="display:none;">
+            <div id="paper_safeshift" style="display:none;">
               <p class="lead mb-5" align="justify">
                 As autonomous driving technology matures, safety and robustness of its key components, including trajectory 
                 prediction, is vital. Though real-world datasets, such as Waymo Open Motion, provide realistic recorded scenarios 
@@ -152,12 +152,12 @@
         
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
-            <a href="https://arxiv.org/pdf/2304.01428.pdf">
+            <a href="https://arxiv.org/pdf/2309.13144.pdf">
               <img src="data/img/publications/sorts.png">
             </a>
           </div>
           <div style="grid-column: span 3;">
-            <h4 class="mb-0">Learned Tree Search for Long-Horizon Social Robot Navigation in Shared Airspace</h4>
+            <h4 class="mb-0">SoRTS: Learned Tree Search for Long-Horizon Social Robot Navigation</h4>
             <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
               <b class="text-primary">Ingrid Navarro*</b>, Jay Patrikar*, Joao P. A. Dantas, Rohan Baijal, Ian Higgins, Sebastian Scherer, and Jean Oh
             </p>
@@ -166,7 +166,7 @@
           
             <div class="center">
               <p>
-                [<a class="link" href="https://arxiv.org/pdf/2304.01428.pdf">Paper</a> | 
+                [<a class="link" href="https://arxiv.org/pdf/2309.13144.pdf">Paper</a> | 
                 <a class="link" href="https://github.com/cmubig/sorts">Code</a> | 
                 <a class="link" href="https://youtu.be/PBE3O4cW2rI">Video</a> ]
               </p>
@@ -179,24 +179,30 @@
             <div id="paper_sorts" style="display:none;">
               <p class="lead mb-5" align="justify">
                 The fast-growing demand for fully autonomous
-                aerial operations in shared spaces necessitates developing
-                trustworthy agents that can safely and seamlessly navigate in
-                crowded, dynamic spaces. In this work, we propose <i>Social Robot
-                Tree Search (SoRTS)</i>, an algorithm for the safe navigation
-                of mobile robots in social domains. SoRTS aims to augment
-                existing socially-aware trajectory prediction policies with a
-                Monte Carlo Tree Search planner for improved downstream
-                navigation of mobile robots. To evaluate the performance of
-                our method, we choose the use case of social navigation for
-                general aviation. To aid this evaluation, within this work, we
-                also introduce X-PlaneROS, a high-fidelity aerial simulator,
-                to enable more research in full-scale aerial autonomy. By
-                conducting a user study based on the assessments of 26 FAA certified pilots, 
-                we show that SoRTS performs comparably
-                to a competent human pilot, significantly outperforming our
-                baseline algorithm. We further complement these results with
-                self-play experiments, showcasing our algorithm’s behavior in
-                scenarios with increasing complexity.
+                robots in shared spaces calls for the development of trustworthy
+                agents that can safely and seamlessly navigate in crowded environments. 
+                Recent models for motion prediction show promise
+                in characterizing social interactions in such environments. Still,
+                adapting them for navigation is challenging as they often suffer
+                from generalization failures. Prompted by this, we propose
+                <i>Social Robot Tree Search (SoRTS)</i>, an algorithm for safe
+                robot navigation in social domains. SoRTS aims to augment
+                existing socially aware motion prediction models for longhorizon navigation using 
+                Monte Carlo Tree Search.
+                </p>
+                <p class="lead mb-5" align="justify">
+                We use social navigation in general aviation as a case study
+                to evaluate our approach and further the research in full-scale
+                aerial autonomy. In doing so, we introduce X-PlaneROS, a highfidelity aerial 
+                simulator that enables human-robot interaction.
+                We use X-PlaneROS to conduct a first-of-its-kind user study
+                where 26 FAA-certified pilots interact with a human pilot, our
+                algorithm, and its ablation. Our results, supported by statistical
+                evidence, show that SoRTS exhibits a comparable performance
+                to competent human pilots, significantly outperforming its ablation. Finally, we 
+                complement these results with a broad set of
+                self-play experiments to showcase our algorithm’s performance
+                in scenarios with increasing complexity.
                 </p>
             </div>
           </div>
