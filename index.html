@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -45,7 +44,9 @@
         <!-- <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="data/img/profile.jpg" alt=""> -->
       </span>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+            aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -57,7 +58,8 @@
           <a class="nav-link js-scroll-trigger" href="#publications">Publications</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#resume" onclick="window.open('data/files/navars.pdf')">CV</a>
+          <a class="nav-link js-scroll-trigger" href="#resume" 
+          onclick="window.open('data/files/navars.pdf')">CV</a>
         </li>
       </ul>
     </div>
@@ -67,20 +69,22 @@
     <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
       <div class="w-100">
         <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="data/img/profile.jpg" width="30%" alt="">
-        <h2 class="mb-0">Ingrid 
-          <span class="text-primary">Navarro</span>
-        </h2>
+        <h2 class="mb-0"><span class="text-primary">Ingrid Navarro</span></h2>
+        
         <p class="lead mb-5"> 
-        I got a Masters in Robotics from Carnegie Mellon University (CMU) in 2022, and I'm currently 
-        pursuing my PhD in Robotics also at CMU. I'm advised by <a href="https://cmubig.github.io/team/jean_oh/">Jean Oh</a>, 
-        head of the <a href="https://cmubig.github.io">Bot Intelligence Group (BIG)</a>. 
+          I got a Masters in Robotics from Carnegie Mellon University (CMU) in 2022, and I'm currently 
+          pursuing a PhD in Robotics also at CMU. I'm advised by 
+          <a href="https://cmubig.github.io/team/jean_oh/">Jean Oh</a>, head of the 
+          <a href="https://cmubig.github.io">Bot Intelligence Group (BIG)</a>. 
         </p>
+
         <p class="lead mb-5">
-          My research interests currently involve enabling autonomous navigation systems to seamlessly 
-          and safely interact with humans in shared spaces. As such, I work on developing algorithms
-          and methods that assess and enhance the robustness of motion prediction models and social
-          navigation algorithms. My research is mainly focused on the domains of aviation and autonomous 
-          driving, but I have also explored other domains such as motion in human crowds and sports.
+          My research interests involve enabling autonomous navigation systems to seamlessly and
+          safely interact with humans in shared spaces. As such, I currently work on developing 
+          algorithms and methods that assess and enhance the robustness of motion prediction models 
+          and social navigation algorithms. My ongoing works are mostly focused on the domains of 
+          aviation and autonomous driving, but I have also explored other domains such as motion in 
+          human crowds and sports.
         </p>
 
         <div class="social-icons">
@@ -111,11 +115,20 @@
               <img src="data/img/publications/safeshift.png">
             </a>
           </div>
+
+          <!-- SafeShift -->
+          <hr class="small-rule" />
           <div style="grid-column: span 3;">
-            <h4 class="mb-0">SafeShift: Safety-Informed Distribution Shift for Robust Trajectory Prediction in Autonomous Driving</h4>
+            <h4 class="mb-0">
+              <b class="text-primary">SafeShift:</b> Safety-Informed Distribution Shift for Robust 
+              Trajectory Prediction in Autonomous Driving
+            </h4>
+            
             <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
-              Benjamin Stoler*, <b class="text-primary">Ingrid Navarro*</b>, Meghdeep Jana, Soonmin Hwang, Jonathan Francis, and Jean Oh
+              Benjamin Stoler*, <b class="text-primary">Ingrid Navarro*</b>, Meghdeep Jana, 
+              Soonmin Hwang, Jonathan Francis, and Jean Oh
             </p>
+            
             <p style="margin-top:0px;"><i>* Equal contribution. </i></p>
             <p style="margin-top:0px;"><i>Preprint in ArXiv (Manuscript currently under review). </i></p>
           
@@ -123,8 +136,7 @@
               <p>
                 [ <a class="link" href="https://arxiv.org/pdf/2309.08889.pdf">Paper</a> 
                 | <a class="link" href="https://github.com/cmubig/SafeShift">Code</a>  
-                <!-- | <a class="link" href="https://youtu.be/PBE3O4cW2rI">Video</a> -->
-                 ]
+                ]
               </p>
             </div>
 
@@ -134,35 +146,43 @@
             
             <div id="paper_safeshift" style="display:none;">
               <p class="lead mb-5" align="justify">
-                As autonomous driving technology matures, safety and robustness of its key components, including trajectory 
-                prediction, is vital. Though real-world datasets, such as Waymo Open Motion, provide realistic recorded scenarios 
-                for model development, they often lack truly safety-critical situations. Rather than utilizing unrealistic 
-                simulation or dangerous realworld testing, we instead propose a framework to characterize such datasets and find 
-                hidden safety-relevant scenarios within. Our approach expands the spectrum of safety-relevance, allowing us to study 
-                trajectory prediction models under a safetyinformed, distribution shift setting. We contribute a generalized scenario 
-                characterization method, a novel scoring scheme to find subtly-avoided risky scenarios and an evaluation of trajectory 
-                prediction models in this setting. We further contribute a remediation strategy, achieving a 10% average reduction in
-                 prediction collision rates. To facilitate future research, we release our code to the public: github.com/cmubig/SafeShift
+                As autonomous driving technology matures, safety and robustness of its key components, 
+                including trajectory prediction, is vital. Though real-world datasets, such as Waymo 
+                Open Motion, provide realistic recorded scenarios for model development, they often 
+                lack truly safety-critical situations. Rather than utilizing unrealistic simulation 
+                or dangerous realworld testing, we instead propose a framework to characterize such 
+                datasets and find hidden safety-relevant scenarios within. Our approach expands the 
+                spectrum of safety-relevance, allowing us to study trajectory prediction models under 
+                a safety-informed, distribution shift setting. We contribute a generalized scenario 
+                characterization method, a novel scoring scheme to find subtly-avoided risky scenarios
+                and an evaluation of trajectory prediction models in this setting. We further contribute 
+                a remediation strategy, achieving a 10% average reduction in prediction collision rates. 
                 </p>
             </div>
           </div>
         </div>
-
+        
         <hr class="small-rule" />
         
+        <!-- SoRTS -->
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
             <a href="https://arxiv.org/pdf/2309.13144.pdf">
-              <img src="data/img/publications/sorts.png">
+              <img src="data/img/publications/sorts.gif">
             </a>
           </div>
           <div style="grid-column: span 3;">
-            <h4 class="mb-0">SoRTS: Learned Tree Search for Long-Horizon Social Robot Navigation</h4>
+            <h4 class="mb-0">
+              <b class="text-primary">SoRTS:</b> Learned Tree Search for Long-Horizon Social Robot 
+              Navigation
+            </h4>
+
             <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
-              <b class="text-primary">Ingrid Navarro*</b>, Jay Patrikar*, Joao P. A. Dantas, Rohan Baijal, Ian Higgins, Sebastian Scherer, and Jean Oh
+              <b class="text-primary">Ingrid Navarro*</b>, Jay Patrikar*, Joao P. A. Dantas, 
+              Rohan Baijal, Ian Higgins, Sebastian Scherer, and Jean Oh
             </p>
             <p style="margin-top:0px;"><i>* Equal contribution. </i></p>
-            <p style="margin-top:0px;"><i>Preprint in ArXiv (Manuscript currently under review). </i></p>
+            <p style="margin-top:0px;"><i> IEEE Robotics and Automation Letters, 2024. </i></p>
           
             <div class="center">
               <p>
@@ -178,38 +198,34 @@
             
             <div id="paper_sorts" style="display:none;">
               <p class="lead mb-5" align="justify">
-                The fast-growing demand for fully autonomous
-                robots in shared spaces calls for the development of trustworthy
-                agents that can safely and seamlessly navigate in crowded environments. 
-                Recent models for motion prediction show promise
-                in characterizing social interactions in such environments. Still,
-                adapting them for navigation is challenging as they often suffer
-                from generalization failures. Prompted by this, we propose
-                <i>Social Robot Tree Search (SoRTS)</i>, an algorithm for safe
-                robot navigation in social domains. SoRTS aims to augment
-                existing socially aware motion prediction models for longhorizon navigation using 
-                Monte Carlo Tree Search.
-                </p>
-                <p class="lead mb-5" align="justify">
-                We use social navigation in general aviation as a case study
-                to evaluate our approach and further the research in full-scale
-                aerial autonomy. In doing so, we introduce X-PlaneROS, a highfidelity aerial 
-                simulator that enables human-robot interaction.
-                We use X-PlaneROS to conduct a first-of-its-kind user study
-                where 26 FAA-certified pilots interact with a human pilot, our
-                algorithm, and its ablation. Our results, supported by statistical
-                evidence, show that SoRTS exhibits a comparable performance
+                The fast-growing demand for fully autonomous robots in shared spaces calls for the 
+                development of trustworthy agents that can safely and seamlessly navigate in crowded 
+                environments. Recent models for motion prediction show promise in characterizing social 
+                interactions in such environments. Still, adapting them for navigation is challenging 
+                as they often suffer from generalization failures. Prompted by this, we propose
+                <i>Social Robot Tree Search (SoRTS)</i>, an algorithm for safe robot navigation in social 
+                domains. SoRTS aims to augment existing socially aware motion prediction models for 
+                longhorizon navigation using Monte Carlo Tree Search.
+              </p>
+
+              <p class="lead mb-5" align="justify">
+                We use social navigation in general aviation as a case study to evaluate our approach 
+                and further the research in full-scale aerial autonomy. In doing so, we introduce 
+                <i>X-PlaneROS</i>, a highfidelity aerial simulator that enables human-robot interaction.
+                We use X-PlaneROS to conduct a first-of-its-kind user study where 26 FAA-certified 
+                pilots interact with a human pilot, our algorithm, and its ablation. Our results, 
+                supported by statistical evidence, show that SoRTS exhibits a comparable performance
                 to competent human pilots, significantly outperforming its ablation. Finally, we 
-                complement these results with a broad set of
-                self-play experiments to showcase our algorithm’s performance
-                in scenarios with increasing complexity.
-                </p>
+                complement these results with a broad set of self-play experiments to showcase our 
+                algorithm’s performance in scenarios with increasing complexity.
+              </p>
             </div>
           </div>
         </div>
 
         <hr class="small-rule" />
 
+        <!-- K-SAVEN -->
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
             <a href="https://arxiv.org/pdf/2212.11345.pdf">
@@ -217,9 +233,12 @@
             </a>
           </div>
           <div style="grid-column: span 3;">
-            <h4 class="mb-0">Knowledge-driven Scene Priors for Semantic Audio-Visual Embodied Navigation</h4>
+            <h4 class="mb-0">
+              Knowledge-driven Scene Priors for Semantic Audio-Visual Embodied Navigation
+            </h4>
             <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
-              Gyan Tatiya, Jonathan Francis, Luca Bondi, <b class="text-primary">Ingrid Navarro</b>, Eric Nyberg, Jivko Sinapov, and Jean Oh
+              Gyan Tatiya, Jonathan Francis, Luca Bondi, <b class="text-primary">Ingrid Navarro</b>, 
+              Eric Nyberg, Jivko Sinapov, and Jean Oh
             </p>
             <p style="margin-top:0px;"><i>In ArXiv, 2022. </i></p>
           
@@ -236,25 +255,31 @@
             <div id="paper_ksven" style="display:none;">
               <p class="lead mb-5" align="justify">
                 Generalisation to unseen contexts remains a challenge for embodied navigation agents. 
-                In the context of semantic audio-visual navigation (SAVi) tasks, the notion of generalisation should include both generalising 
-                to unseen indoor visual scenes as well as generalising to unheard sounding objects. However, previous SAVi task definitions 
-                do not include evaluation conditions on truly novel sounding objects, resorting instead to evaluating agents on unheard sound 
-                clips of known objects; meanwhile, previous SAVi methods do not include explicit mechanisms for incorporating domain knowledge 
-                about object and region semantics. These weaknesses limit the development and assessment of models' abilities to generalise their 
-                learned experience. In this work, we introduce the use of knowledge-driven scene priors in the semantic audio-visual embodied 
-                navigation task: we combine semantic information from our novel knowledge graph that encodes object-region relations, spatial 
-                knowledge from dual Graph Encoder Networks, and background knowledge from a series of pre-training tasks -- all within a 
-                reinforcement learning framework for audio-visual navigation. We also define a new audio-visual navigation sub-task, where 
-                agents are evaluated on novel sounding objects, as opposed to unheard clips of known objects. We show improvements over strong 
-                baselines in generalisation to unseen regions and novel sounding objects, within the Habitat-Matterport3D simulation environment, 
-                under the SoundSpaces task.
+                In the context of semantic audio-visual navigation (SAVi) tasks, the notion of 
+                generalisation should include both generalising to unseen indoor visual scenes as 
+                well as generalising to unheard sounding objects. However, previous SAVi task 
+                definitions do not include evaluation conditions on truly novel sounding objects, 
+                resorting instead to evaluating agents on unheard sound clips of known objects; 
+                meanwhile, previous SAVi methods do not include explicit mechanisms for incorporating 
+                domain knowledge about object and region semantics. These weaknesses limit the 
+                development and assessment of models' abilities to generalise their learned experience. 
+                In this work, we introduce the use of knowledge-driven scene priors in the semantic 
+                audio-visual embodied navigation task: we combine semantic information from our novel 
+                knowledge graph that encodes object-region relations, spatial knowledge from dual 
+                Graph Encoder Networks, and background knowledge from a series of pre-training tasks 
+                -- all within a reinforcement learning framework for audio-visual navigation. We also 
+                define a new audio-visual navigation sub-task, where agents are evaluated on novel 
+                sounding objects, as opposed to unheard clips of known objects. We show improvements
+                over strong baselines in generalisation to unseen regions and novel sounding objects, 
+                within the Habitat-Matterport3D simulation environment, under the SoundSpaces task.
                 </p>
             </div>
           </div>
         </div>
 
         <hr class="small-rule" />
-
+        
+        <!-- Challenges in Close-Proximity -->
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
             <a href="https://arxiv.org/pdf/2211.06932.pdf">
@@ -262,11 +287,19 @@
             </a>
           </div>
           <div style="grid-column: span 3;">
-            <h4 class="mb-0">Challenges in Close-Proximity Safe and Seamless Operation of Manned and Unmanned Aircraft in Shared Airspace</h4>
+            <h4 class="mb-0">
+              Challenges in Close-Proximity Safe and Seamless Operation of Manned and Unmanned 
+              Aircraft in Shared Airspace
+            </h4>
             <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
-              Jay Patrikar, Joao P. A. Dantas, Sourish Ghosh, Parv Kapoor, Ian Higgins, Jasmine J. Aloor, <b class="text-primary">Ingrid Navarro</b>, Jimin Sun, Ben Stoler, Milad Hamidi, Rohan Baijal, Brady Moon, Jean Oh, Sebastian Scherer
+              Jay Patrikar, Joao P. A. Dantas, Sourish Ghosh, Parv Kapoor, Ian Higgins, 
+              Jasmine J. Aloor, <b class="text-primary">Ingrid Navarro</b>, Jimin Sun, Ben Stoler, 
+              Milad Hamidi, Rohan Baijal, Brady Moon, Jean Oh, Sebastian Scherer
             </p>
-            <p style="margin-top:0px;"><i>In Aerial Robotics Workshop at the International Conference on Robotics and Automation (ICRA), 2022. </i></p>
+            <p style="margin-top:0px;"><i>
+              Aerial Robotics Workshop at the International Conference on Robotics and Automation 
+              (ICRA), 2022. </i>
+            </p>
           
             <div class="center">
               <p>
@@ -280,21 +313,27 @@
             
             <div id="paper_chuav" style="display:none;">
               <p class="lead mb-5" align="justify">
-                We propose developing an integrated system to keep autonomous unmanned aircraft safely separated and behave as expected in conjunction with 
-                manned traffic. The main goal is to achieve safe manned-unmanned vehicle teaming to improve system performance, have each (robot/human) 
-                teammate learn from each other in various aircraft operations, and reduce the manning needs of manned aircraft. The proposed system anticipates 
-                and reacts to other aircraft using natural language instructions and can serve as a co-pilot or operate entirely autonomously. We point out the 
-                main technical challenges where improvements on current state-of-the-art are needed to enable Visual Flight Rules to fully autonomous aerial operations, 
-                bringing insights to these critical areas. Furthermore, we present an interactive demonstration in a prototypical scenario with one AI pilot 
-                and one human pilot sharing the same terminal airspace, interacting with each other using language, and landing safely on the same runway.
-                We also show a demonstration of a vision-only aircraft detection system.
-                </p>
+                We propose developing an integrated system to keep autonomous unmanned aircraft 
+                safely separated and behave as expected in conjunction with manned traffic. The main 
+                goal is to achieve safe manned-unmanned vehicle teaming to improve system performance, 
+                have each (robot/human) teammate learn from each other in various aircraft operations, 
+                and reduce the manning needs of manned aircraft. The proposed system anticipates and 
+                reacts to other aircraft using natural language instructions and can serve as a 
+                co-pilot or operate entirely autonomously. We point out the main technical challenges 
+                where improvements on current state-of-the-art are needed to enable Visual Flight 
+                Rules to fully autonomous aerial operations, bringing insights to these critical areas. 
+                Furthermore, we present an interactive demonstration in a prototypical scenario with 
+                one AI pilot and one human pilot sharing the same terminal airspace, interacting with 
+                each other using language, and landing safely on the same runway. We also show a 
+                demonstration of a vision-only aircraft detection system.
+              </p>
             </div>
           </div>
         </div>
 
         <hr class="small-rule" />
 
+        <!-- SocialPatteRNN -->
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
             <a href="https://www.ri.cmu.edu/app/uploads/2022/08/MSR_Thesis.pdf">
@@ -302,15 +341,20 @@
             </a>
           </div>
           <div style="grid-column: span 3;">
-            <h4 class="mb-0">Social-PatteRNN: Socially-Aware Trajectory Prediction Guided by Motion Patterns</h4>
+            <h4 class="mb-0">
+              Social-PatteRNN: Socially-Aware Trajectory Prediction Guided by Motion Patterns
+            </h4>
             <p class="blue" style="margin-top:0px; margin-bottom:0px;"> 
               <b class="text-primary">Ingrid Navarro</b> and Jean Oh
             </p>
-            <p style="margin-top:0px;"><i>In proceedings of IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2022. </i></p>
+            <p style="margin-top:0px;">
+              <i> IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2022. </i>
+            </p>
           
             <div class="center">
               <p>
-                [<a class="link" href="https://arxiv.org/pdf/2209.05649.pdf">Paper</a> | <a class="link" href="https://github.com/cmubig/social-patternn">Code</a>]
+                [<a class="link" href="https://arxiv.org/pdf/2209.05649.pdf">Paper</a> 
+                | <a class="link" href="https://github.com/cmubig/social-patternn">Code</a>]
               </p>
             </div>
 
@@ -320,30 +364,33 @@
             
             <div id="paper_sprnn" style="display:none;">
               <p class="lead mb-5" align="justify">
-                As intelligent robots across domains start collaborating with humans in shared environments, 
-                <i>e.g.</i>, urban settings and airspace, algorithms that enable them to reason over human motion 
-                and intent are important to ensure seamless and safe interplay. Even beyond robotics, other domains,
-                <i>e.g.</i>, surveillance and sports analysis, may also benefit from this type of algorithms.
-
-                In our work, we study human intent by focusing on the problem of predicting trajectories in 
-                dynamic environments. We are further interested in designing methods that are able to 
-                generalize across domains. Specifically, we target domains where navigation guidelines 
-                are relatively strictly defined yet not necessarily marked in their physical environments. 
-                We hypothesize that within these domains, in the short-term, agents tend to exhibit motion 
-                patterns that reveal important context information related to the agent's general direction,
-                admissible motions, intermediate goals and social influences. From this intuition, we propose 
-                <i>Social-PatteRNN</i>, a new recurrent generative model that exploits motion patterns to encode
-                the aforesaid context information and use it as conditioning signal for predicting trajectories. 
-                We assess our approach across three different problem domains: human motion in crowds, human 
-                motion in sports and aircraft motion in terminal airspace. Finally, we show that our approach 
-                achieves state-of-the-art results across these domains.
-                </p>
+                As intelligent robots across domains start collaborating with humans in shared 
+                environments, <i>e.g.</i>, urban settings and airspace, algorithms that enable them 
+                to reason over human motion and intent are important to ensure seamless and safe 
+                interplay. Even beyond robotics, other domains, <i>e.g.</i>, surveillance and sports 
+                analysis, may also benefit from this type of algorithms. 
+                
+                In our work, we study human intent by focusing on the problem of predicting 
+                trajectories in dynamic environments. We are further interested in designing methods 
+                that are able to generalize across domains. Specifically, we target domains where
+                navigation guidelines are relatively strictly defined yet not necessarily marked in 
+                their physical environments. We hypothesize that within these domains, in the 
+                short-term, agents tend to exhibit motion patterns that reveal important context 
+                information related to the agent's general direction, admissible motions, intermediate 
+                goals and social influences. From this intuition, we propose <i>Social-PatteRNN</i>, 
+                a new recurrent generative model that exploits motion patterns to encode the aforesaid 
+                context information and use it as conditioning signal for predicting trajectories. 
+                We assess our approach across three different problem domains: human motion in crowds, 
+                human motion in sports and aircraft motion in terminal airspace. Finally, we show 
+                that our approach achieves state-of-the-art results across these domains.
+              </p>
             </div>
           </div>
         </div>
 
         <hr class="small-rule" />
 
+        <!-- Challenges in EVLP -->
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
             <a href="https://arxiv.org/abs/2106.13948">
@@ -351,7 +398,9 @@
             </a>
           </div>
           <div style="grid-column: span 3;">
-            <h4 class="mb-0">Core Challenges in Embodied Vision-Language Planning</h4>
+            <h4 class="mb-0">
+              Core Challenges in Embodied Vision-Language Planning
+            </h4>
             <p class="blue" style="margin-top:0px; margin-bottom:0px;">
               Jonathan Francis*, Nariaki Kitamura*, Felix Labelle*, Xiaopen Lu*, 
               <b class="text-primary">Ingrid Navarro*</b> and Jean Oh
@@ -371,31 +420,30 @@
             
             <div id="paper_evlp" style="display:none;">
               <p class="lead mb-5" align="justify">
-                  Recent advances in the areas of multimodal machine learning and 
-                  artificial intelligence (AI) have led to the development of challenging 
-                  tasks at the intersection of Computer Vision, Natural Language Processing,
-                    and Embodied AI. Whereas many approaches and previous survey pursuits 
-                    have characterised one or two of these dimensions, there has not been 
-                    a holistic analysis at the center of all three. Moreover, even when
-                    combinations of these topics are considered, more focus is placed on 
-                    describing, e.g., current architectural methods, as opposed to also 
-                    illustrating high-level challenges and opportunities for the field. 
-                    In this survey paper, we discuss Embodied Vision-Language Planning (EVLP) 
-                    tasks, a family of prominent embodied navigation and manipulation problems 
-                    that jointly use computer vision and natural language. We propose a taxonomy 
-                    to unify these tasks and provide an in-depth analysis and comparison of the 
-                    new and current algorithmic approaches, metrics, simulated environments, 
-                    as well as the datasets used for EVLP tasks. Finally, we present the core 
-                    challenges that we believe new EVLP works should seek to address, and
-                    we advocate for task construction that enables model generalizability 
-                    and furthers real-world deployment.
-                </p>
+                Recent advances in the areas of multimodal machine learning and artificial 
+                intelligence (AI) have led to the development of challenging tasks at the intersection 
+                of Computer Vision, Natural Language Processing, and Embodied AI. Whereas many 
+                approaches and previous survey pursuits have characterised one or two of these 
+                dimensions, there has not been a holistic analysis at the center of all three. 
+                Moreover, even when combinations of these topics are considered, more focus is placed 
+                on describing, e.g., current architectural methods, as opposed to also illustrating 
+                high-level challenges and opportunities for the field. In this survey paper, we 
+                discuss Embodied Vision-Language Planning (EVLP) tasks, a family of prominent 
+                embodied navigation and manipulation problems that jointly use computer vision and 
+                natural language. We propose a taxonomy to unify these tasks and provide an in-depth 
+                analysis and comparison of the new and current algorithmic approaches, metrics, 
+                simulated environments, as well as the datasets used for EVLP tasks. Finally, we 
+                present the core challenges that we believe new EVLP works should seek to address, and
+                we advocate for task construction that enables model generalizability and furthers 
+                real-world deployment.
+              </p>
             </div>
           </div>
         </div>
 
         <hr class="small-rule" />
 
+        <!-- Data Augmentation -->
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
             <a href="https://link.springer.com/chapter/10.1007%2F978-3-030-04497-8_28">
@@ -403,17 +451,21 @@
             </a>
           </div>
           <div style="grid-column: span 3;">
-            <h4 class="mb-0">Data Augmentation in Deep Learning-Based Obstacle
-               Detection System for Autonomous Navigation on Aquatic Surfaces</h4>
+            <h4 class="mb-0">
+              Data Augmentation in Deep Learning-Based Obstacle Detection System for Autonomous 
+              Navigation on Aquatic Surfaces
+            </h4>
             <p class="blue" style="margin-top:0px; margin-bottom:0px;">
-              <b class="text-primary">Ingrid Navarro</b>, Alberto Herrera, Itzel Hernández, and Leonardo Garrido 
+              <b class="text-primary">Ingrid Navarro</b>, Alberto Herrera, Itzel Hernández, and 
+              Leonardo Garrido 
             </p>
-            <p style="margin-top:0px;"><i>Mexican International Conference on Artificial Intelligence (MICAI), 2018</i></p>
+            <p style="margin-top:0px;">
+              <i>Mexican International Conference on Artificial Intelligence (MICAI), 2018</i>
+            </p>
             <div class="center">
               <p>
-                [ <a class="link" href="https://link.springer.com/chapter/10.1007%2F978-3-030-04497-8_28">Paper</a> |
-                  <a class="link" href="https://github.com/navarrs/cv-roboboat">Code</a> 
-              ]
+                [ <a class="link" href="https://link.springer.com/chapter/10.1007%2F978-3-030-04497-8_28">Paper</a> 
+                | <a class="link" href="https://github.com/navarrs/cv-roboboat">Code</a> ]
               </p>
             </div>
 
@@ -423,33 +475,31 @@
     
             <div id="paper_vantec" style="display:none;">
               <p align="justify">
-                Deep learning-based frameworks have been widely used in
-                object recognition, perception and autonomous navigation tasks, show-
-                ing outstanding feature extraction capabilities. Nevertheless, the effec-
-                tiveness of such detectors usually depends on large amounts of train-
-                ing data. For specific object-recognition tasks, it is often difficult and
-                time-consuming to gather enough valuable data [1]. Data Augmenta-
-                tion has been broadly adopted to overcome these difficulties, as it allows
-                to increase the training data and introduce variation in qualitative ele-
-                ments like color, illumination, distortion and orientation. In this paper,
-                we leverage on the object detection framework YOLOv2 [2] to evaluate
-                the behavior of an obstacle detection system for an autonomous boat de-
-                signed for the International RoboBoat Competition. We are focused on
-                how the overall performance of a model changes with different augmen-
-                tation techniques. Thus, we analyze the features that the network learns
-                by using geometric and pixel-wise transformations to augment our data.
-                Our instances of interest are buoys and sea markers, thus to generate
-                training data comprising these classes, we simulated the aquatic surface
-                of the boat and collected data from the COCO dataset [3]. Finally, we
-                discuss that significant generalization is achieved in the learning process
-                of our experiments using different augmentation techniques.
+                Deep learning-based frameworks have been widely used in object recognition, 
+                perception and autonomous navigation tasks, showing outstanding feature extraction 
+                capabilities. Nevertheless, the effectiveness of such detectors usually depends on 
+                large amounts of training data. For specific object-recognition tasks, it is often 
+                difficult and time-consuming to gather enough valuable data. Data Augmentation has 
+                been broadly adopted to overcome these difficulties, as it allows to increase the 
+                training data and introduce variation in qualitative elements like color, 
+                illumination, distortion and orientation. In this paper, we leverage on the object 
+                detection framework YOLOv2 to evaluate the behavior of an obstacle detection system 
+                for an autonomous boat designed for the International RoboBoat Competition. We are 
+                focused on how the overall performance of a model changes with different augmentation 
+                techniques. Thus, we analyze the features that the network learns by using geometric 
+                and pixel-wise transformations to augment our data. Our instances of interest are buoys 
+                and sea markers, thus to generate training data comprising these classes, we simulated 
+                the aquatic surface of the boat and collected data from the COCO dataset. Finally, we
+                discuss that significant generalization is achieved in the learning process of our 
+                experiments using different augmentation techniques.
               </p>
             </div>
           </div>
         </div>
         
         <hr class="small-rule" />
-
+        
+        <!-- Sparseg -->
         <div class="grid-wrapper">
           <div class="profile center" style="grid-column: span 2; margin:auto;">
             <a href="https://riss.ri.cmu.edu/wp-content/uploads/2018/11/RISS_Journal_Nov26-r.pdf">
