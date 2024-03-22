@@ -1,47 +1,51 @@
-url: "https://navars.xyz"
-permalink: pretty
+# url: "https://navars.xyz"
+theme: minima
+# paginate: 5
+# paginate_path: "/research/page:num"
 
 collections:
   - publications
-  - publication_posts
 
 collections:
   publications:
     output: true
-  publication_posts:
-    permalink: "/posts/"
-    output: true
 
-sass:
-  style: compressedme
-  source_dir: _sass
+# sass:
+#   style: compressedme
+#   source_dir: _sass
 
-plugins:
-  - jekyll-sitemap
-  - jekyll-paginate
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-scholar
-  - kramdown-parser-gfm
+# plugins:
+#   - jekyll-sitemap
+#   - jekyll-paginate
+#   - jekyll-feed
+#   - jekyll-seo-tag
+#   - jekyll-scholar
+#   - kramdown-parser-gfm
 
 exclude:
+#   - clean-theme.gemspec
+  - .jekyll-cache/
+  - .sass-cache/
   - Gemfile
-  - clean-theme.gemspec
   - Gemfile.lock
-  - node_modules
+  # - node_modules
   - vendor/bundle/
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
 
-livereload: true
-
-sass:
-  style: compressedme
-  source_dir: _sass
-
 # Build settings
 markdown: kramdown
 permalink: pretty
 
+# defaults:
+#   - scope:
+#       path: ""
+#       type: "posts"
+#     values:
+#       permalink: ""
+
+# sass:
+#   style: compressedme
+#   source_dir: _sass
 
