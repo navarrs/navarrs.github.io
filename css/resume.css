@@ -207,7 +207,7 @@ section.resume-section .resume-item .resume-date{
 } */
 
 .bg-primary{
-	background-image: url( '../data/img/background.gif');
+	background-image: url('../assets/img/background.gif');
 	opacity: 0.85;
 	background-color:#4C456A!important
 }

@@ -1,0 +1,13 @@
+{
+   "MD033": {
+      "allowed_elements": [
+         "nobr",
+         "sup",
+         "a",
+         "div",
+         "style"
+      ]
+   },
+   "MD025": false,
+   "MD041": false
+}

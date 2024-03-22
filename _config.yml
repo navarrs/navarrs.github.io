@@ -1,0 +1,47 @@
+url: "https://navars.xyz"
+permalink: pretty
+
+collections:
+  - publications
+  - publication_posts
+
+collections:
+  publications:
+    output: true
+  publication_posts:
+    permalink: "/posts/"
+    output: true
+
+sass:
+  style: compressedme
+  source_dir: _sass
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-scholar
+  - kramdown-parser-gfm
+
+exclude:
+  - Gemfile
+  - clean-theme.gemspec
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+livereload: true
+
+sass:
+  style: compressedme
+  source_dir: _sass
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+
