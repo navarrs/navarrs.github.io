@@ -24,9 +24,12 @@ url: "https://navars.xyz" # the base hostname & protocol for your site, e.g. htt
 github_username:  navarrs
 
 # Build settings
-theme: minima
+theme: bulma-clean-theme
 plugins:
   - jekyll-feed
+
+show_sidebar: false
+menubar: research_menu
 
 # Exclude from processing.
 # The following items will not be processed, by default.
