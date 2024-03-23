@@ -13,6 +13,7 @@
 
 <div class="container">
 	<h1 class="mb-3">Publications</h1>
+	<br>
 
 	{% for pub in site.publications reversed %}
 	<div class="grid-wrapper">
@@ -28,6 +29,7 @@
 		
 		<div style="grid-column: span 3;">
 			<h4 class="mb-0"> {{ pub.title }} </h4>
+			<br>
 			<p class="blue" style="margin-top:0px; margin-bottom:0px;"> {{ pub.authors }} </p>
 			<p style="margin-top:0px;"><i>{{ pub.note }} </i></p>
 			<p style="margin-top:0px;"><i>{{ pub.where }} </i></p>
@@ -49,7 +51,7 @@
 				{% endif %}
 				]</p>
 			</div>
-
+			<br>
 			<div onclick="show_abstract('{{ pub.id }}')">
 				<b class="abstract">Toggle Abstract</b>
 			</div>
