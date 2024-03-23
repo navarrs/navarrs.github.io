@@ -1,0 +1,44 @@
+<section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="publications">
+	<div class="container">
+    	<h2 class="mb-3">Publications</h2>
+	
+		{% for pub in site.publications reversed %}
+		<div class="grid-wrapper">
+			<div class="profile center" style="grid-column: span 2; margin:auto;">
+				<a href="{{ pub.paper_url }}"><img src="{{ pub.thumbnail }}"></a>
+			</div>
+			
+			<div style="grid-column: span 3;">
+				<h4 class="mb-0"> {{ pub.title }} </h4>
+				<p class="blue" style="margin-top:0px; margin-bottom:0px;"> {{ pub.authors }} </p>
+				<p style="margin-top:0px;"><i>{{ pub.note }} </i></p>
+				<p style="margin-top:0px;"><i>{{ pub.where }} </i></p>
+				
+				<div class="center">
+					<p>[ <a class="link" href="{{ pub.paper_url }}"> <i class="fa fa-paper-plane"></i> </a> 
+					{% if pub.code != nil %}
+						| <a class="link" href="{{ pub.code }}"> <i class="fa fa-code"></i> </a>
+					{% endif %}
+					{% if pub.poster != nil %}
+						| <a class="link" href="{{ pub.poster }}"> <i class="fa fa-file"></i> </a>
+					{% endif %}
+					{% if pub.video != nil %}
+						| <a class="link" href="{{ pub.video }}"> <i class="fab fa-youtube"></i></a> 
+					{% endif %}
+					]</p>
+				</div>
+	
+				<div onclick="show_abstract('{{ pub.id }}')">
+					<b class="abstract">Toggle Abstract</b>
+				</div>
+				
+				<div id="{{ pub.id }}" style="display:none;">
+					<p class="lead mb-5" align="justify"> {{ pub.abstract }} </p>
+				</div>
+			</div>
+		</div>
+
+		<hr class="small-rule" />
+		{% endfor %}
+    </div>
+</section>

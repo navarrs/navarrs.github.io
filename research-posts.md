@@ -2,6 +2,7 @@
 layout: page
 title: Research Posts
 permalink: /research-posts/
+hero_height: is-small
 hero_image: /assets/img/background.gif
 ---
 {% assign posts = site.posts | where:"categories","publication" %}
