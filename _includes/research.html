@@ -1,0 +1,65 @@
+<link href="assets/css/about.css" rel="stylesheet">
+
+<script>
+	function show_abstract(x) {
+		var x = document.getElementById(x);
+		if (x.style.display === "none") {
+			x.style.display = "block";
+		} else {
+			x.style.display = "none";
+		}
+	}
+</script>
+
+<div class="container">
+	<h1 class="mb-3">Publications</h1>
+
+	{% for pub in site.publications reversed %}
+	<div class="grid-wrapper">
+		<div class="profile center" style="grid-column: span 2; margin:auto;">
+			{% if pub.blogpost_link != nil %}
+				<a href="{{ site.base_url | append: pub.blogpost_link }}">
+					<img src="{{ pub.thumbnail }}">
+				</a>
+			{% else %}
+				<a href="{{ pub.paper_url }}"><img src="{{ pub.thumbnail }}"></a>
+			{% endif %}
+		</div>
+		
+		<div style="grid-column: span 3;">
+			<h4 class="mb-0"> {{ pub.title }} </h4>
+			<p class="blue" style="margin-top:0px; margin-bottom:0px;"> {{ pub.authors }} </p>
+			<p style="margin-top:0px;"><i>{{ pub.note }} </i></p>
+			<p style="margin-top:0px;"><i>{{ pub.where }} </i></p>
+			
+			<div class="center">
+				<p>[ <a class="link" href="{{ pub.paper_url }}"> <i class="fa fa-paper-plane"></i> </a> 
+				{% if pub.code != nil %}
+					| <a class="link" href="{{ pub.code }}"> <i class="fa fa-code"></i> </a>
+				{% endif %}
+				{% if pub.poster != nil %}
+					| <a class="link" href="{{ pub.poster }}"> <i class="fa fa-file"></i> </a>
+				{% endif %}
+				{% if pub.video != nil %}
+					| <a class="link" href="{{ pub.video }}"> <i class="fab fa-youtube"></i></a> 
+				{% endif %}
+				{% if pub.blogpost_link != nil %}
+					| <a class="link" href="{{ site.base_url | append: pub.blogpost_link }}"> 
+					  <i class="fa fa-pager"></i></a> 
+				{% endif %}
+				]</p>
+			</div>
+
+			<div onclick="show_abstract('{{ pub.id }}')">
+				<b class="abstract">Toggle Abstract</b>
+			</div>
+			
+			<div id="{{ pub.id }}" style="display:none;">
+				<p class="lead mb-5" align="justify"> {{ pub.abstract }} </p>
+			</div>
+		</div>
+	</div>
+
+	<hr class="small-rule" />
+	{% endfor %}
+</div>
