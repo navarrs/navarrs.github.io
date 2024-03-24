@@ -1,13 +1,14 @@
 ---
 layout: default
 title: "SafeShift: Safety-Informed Distribution Shift for Robust Trajectory Prediction in Autonomous Driving"
+blogpost_link: /safeshift/
 paper_url: https://arxiv.org/pdf/2309.08889.pdf
 poster: null
 code: https://github.com/cmubig/SafeShift
 video: null
 thumbnail: assets/img/publications/safeshift.png
 authors: Benjamin Stoler*, <b class="text-primary">Ingrid Navarro*</b>, Meghdeep Jana, Soonmin Hwang, Jonathan Francis, and Jean Oh
-note: \* Equal contribution
+note: "* Equal contribution"
 where: Preprint in ArXiv (Manuscript currently under review for IEEE IV 2024)
 id: paper_safeshift
 abstract: "

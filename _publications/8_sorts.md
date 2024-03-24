@@ -8,7 +8,7 @@ code: https://github.com/cmubig/sorts
 video: https://youtu.be/PBE3O4cW2rI
 thumbnail: assets/img/publications/sorts.gif
 authors: <b class="text-primary">Ingrid Navarro*</b>, Jay Patrikar*, Joao P. A. Dantas, Rohan Baijal, Ian Higgins, Sebastian Scherer, and Jean Oh
-note: \* Equal contribution
+note: "* Equal contribution"
 where: IEEE Robotics and Automation Letters, 2024
 id: paper_sorts
 abstract: "The fast-growing demand for fully autonomous robots in shared spaces calls for the 

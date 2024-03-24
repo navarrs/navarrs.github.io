@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Ingrid Navarro
-subtitle: PhD Student in Robotics at Carnegie Mellon University
+subtitle: PhD Student in Robotics at CMU
 hide_footer: true
 hide_hero: false
 hero_height: is-small
