@@ -1,0 +1,237 @@
+---
+layout: post
+author: Ingrid Navarro
+permalink: /amelia-dataset/
+title: Amelia-48
+image: /assets/posts/2024-06-14-amelia-dataset/klax.gif
+link-new-tab: true
+categories: publication
+hero_image: /assets/img/background.gif
+hero_height: is-small
+---
+
+<h1> 
+Amelia-48: A Large-Scale Airport Surface Movement Dataset
+</h1>
+
+[Ingrid Navarro](https://navars.xyz) *, [Pablo Ortega-Kral](https://paok-2001.github.io) *, [Jay Patrikar](https://www.jaypatrikar.me) *, Haichuan Wang, 
+Zelin Ye, Jong Hoon Park, [Jean Oh](https://cmubig.github.io/team/jean_oh/) and [Sebastian Scherer](https://theairlab.org/team/sebastian/) 
+
+*Denotes equal contribution 
+
+**This work is a collaboration between the Bot Intelligence Group ([BIG](https://cmubig.github.io)) and the [AirLab](https://theairlab.org) at Carnegie Mellon University!**
+
+<a class="button" itemprop="github" href="https://github.com/cmubig/AmeliaTF" target="_blank">
+  <i class="fab fa-github fa-lg"></i>
+</a>
+<a class="button" itemprop="paper" href="https://arxiv.org/pdf/2309.08889" target="_blank">
+  <i class="fas fa-file fa-lg"></i>    
+</a> 
+
+<hr>
+
+# Amelia-48
+
+**Amelia-48** is a large-scale airport surface movement dataset collected using the System Wide 
+Information Management (SWIM) Surface Movement Event Service (SMES). With data collection beginning 
+in December 2022, the ~30TB dataset currently provides a year's worth of data and covers 48 airports 
+and TRACON facilities within the US National Airspace System. 
+
+We release this dataset along with its toolkit to encourage research in this domain! Below we an overview of our 
+dataset and data processing toolkit. 
+
+For details on our trajectory forecasting model, go to [Amelia-TF](https://navars.xyz/amelia-tf).
+
+And for even more details, please check out our paper! 
+
+<br>
+
+<table align="center">
+  <tr>
+  <tr>
+    <td><b>Boston Logan International Airport (KBOS)</b></td>
+    <td><b>John F. Kennedy International Airport (KJFK)</b></td>
+  </tr>
+    <td><img src="/assets/posts/2024-06-14-amelia-dataset/kbos.gif" width=565 ></td>
+    <td><img src="/assets/posts/2024-06-14-amelia-dataset/kjfk.gif" width=700 ></td>
+  </tr>
+</table>
+
+<table align="center">
+  <tr>
+    <td><b>Los Angeles International Airport (KLAX)</b></td>
+  </tr>
+  <tr>
+    <td><img src="/assets/posts/2024-06-14-amelia-dataset/klax.gif" width=1300 ></td>
+  </tr>
+</table>
+
+
+### Overview of Our Framework
+
+<p align="center">
+  <img width="1280" src="/assets/posts/2024-06-14-amelia-dataset/amelia_framework.png" alt="SafeShift">
+</p>
+
+
+# Tools
+
+
+Scenarios sampled from real-world datasets are often deemed benign, generally lacking diverse safety-critical situations essential for developing robust models for trajectory prediction. 
+
+Thus, existing approaches for validating autonomous driving (AD) agents have resorted to:
+* **On-road tests**, where valuable rare events are potentially dangerous to other drivers and vulnerable road users. 
+* **Simulated experiments**, where artificial, inaccurate behaviors can leave models unprepared for real-world deployment.  
+* **Data-driven scenario generation**, where generating realistic and challenging scenarios remains an open problem.
+
+### Motivating Example
+
+An effective and under-explored alternative lies somewhere in the middle: **mining large-scale real-world datasets to find and leverage meaningful safety-relevant scenarios that may be hidden in the data**. 
+
+Our key insight is that safety-relevance includes not just scenarios where observed agents act in a safety-critical manner, **but also scenarios where agents are able to avoid infractions through proactive maneuvers**. 
+
+A motivating example is shown in the figure below, where the yellow vehicle makes an aggressive lane change in front of another vehicle. Here, we showcase two possible outcomes:
+* A **safe outcome**, where the red vehicle proactively slows down to avoid a collision with the yellow vehicle, and;
+* An **unsafe outcome**, where the red vehicle was distracted, and thus, fails to anticipate the yellow vehicle's lane change. 
+
+<p align="center">
+  <img width="1280" src="/assets/posts/2024-05-13-safeshift/example.png" alt="SafeShift">
+</p>
+
+### Our idea
+We propose **SafeShift**, an framework consisting of: 
+1. A **scenario characterization** approach focused on capturing safety-relevant scenarios naively overlooked in real-world datasets, e.g., near collisions and proactive maneuvers. 
+2. A methodology for **scoring safety-criticality** which utilizes the scenario features in 1 via counterfactual probing to characterize <i>what-if</i> situations.
+3. Two **downstream applications**: crafting a safety-informed distribution shift and improving the robustness of trajectory prediction models. 
+
+<p align="center">
+  <img width="1280" src="/assets/posts/2024-05-13-safeshift/model.png" alt="SafeShift">
+</p>
+
+<hr>
+
+# Method
+
+### Scenario Characterization 
+
+We propose a **scenario characterization** scheme, where low-level features are computed within a scenario and then aggregated to form a score to represent a scenario’s overall safety-relevance. We consider features across two categories:
+
+* **Individual features** which characterize single-agent state and behavior, including:
+  * Features derived from positional data: speed, acceleation and jerk;
+  * Context-dependent features: waiting period at a conflict point (e.g., waiting at intersections and stop signs), agent speed difference with lane's limit speed, and adherence to a lane, and;
+  * Behavior features: trajectory anomalies. 
+* **Social features** which characterize agent-to-agent interactions:
+  * Time-to-conflict features: time headway (THW), time-to-collision (TTC), deceleration rate to avoid a crash (DRAC) and minimum time to conflict point (mTTCP);
+  * Collision features: collision rate, segement-to-segment overlap, and;
+  * Behavior features: trajectory-pair anomalies.  
+
+We perform a feature correlation analysis, showing that our selected features are largely complementary,
+without excessive overlap in coverage.
+<p align="center">
+  <img width="1100" src="/assets/posts/2024-05-13-safeshift/corrmats.png" alt="CorrMats">
+</p>
+
+### Scenario Scoring
+
+We linearly weigh the above features to compute **individual** and **social** scores for a given agent.
+
+<p align="center">
+  <img width="1000" src="/assets/posts/2024-05-13-safeshift/indsoc_scores.png" alt="Scores">
+</p>
+
+These scores are then combined to form an overall **trajectory score**, and finally a scene score representing the density-normalized sum of all trajectory scores.
+<p align="center">
+  <img width="500" src="/assets/posts/2024-05-13-safeshift/traj_scores.png" alt="Scores">
+</p>
+
+We perform **counterfactual extrapolation and re-scoring** by emulating agents maintaining forward progress in their lanes, without reactivity (e.g., representing the behavior of a distracted driver).
+These **future extrapolated** trajectories are combined with ground truth trajectories as follows, resulting in the desired long tail distribution 
+
+<p align="center">
+  <img width="600" src="/assets/posts/2024-05-13-safeshift/scoring_variations.png" alt="Scores">
+  <img width="450" src="/assets/posts/2024-05-13-safeshift/score_densities.png" alt="Scores">
+</p>
+
+Below, we show an animated example of a counterfactual future extrapolation. Here, the agent of interest is colored in black. On the **left**, we show the **original** scene where the agent anticipates the red traffic light ahead, and thus, reduces speed. On the **right**, we show the **counterfactual** extrapolation where the agent maintains speed, failing to anticipate the traffic light, and thus, collides with the agent ahead.  
+
+<p align="center">
+  <img width="1100" src="/assets/posts/2024-05-13-safeshift/counterfactual.gif" alt="Scores">
+</p>
+
+### Downstream Tasks
+
+We showcase our characterization and scoring methods on two downstream tasks, performed on the Waymo Open Motion Dataset (WOMD): distribution shift creation and robust trajectory prediction. 
+
+#### Distribution Shift Creation 
+
+We split the dataset into an **in-distribution** (ID) set comprising scenarios with low scores, and an **out-of-distribution** (OOD) set comprising the 20% highest scored scenarios.  
+
+<p align="center">
+  <img width="1280" src="/assets/posts/2024-05-13-safeshift/shift.png" alt="Scores">
+</p>
+
+#### Robust Trajectory Prediction
+
+We propose a **remediation strategy** to improve model performance in the OOD scenes. The strategy incorporates the scenario scores into the model’s loss function to increase the prediction model performance: 
+
+<p align="center">
+  <img width="500" src="/assets/posts/2024-05-13-safeshift/score_loss.png" alt="Scores">
+</p>
+
+This loss encourages the model to not treat all scenarios and agents' trajectories as equal and to care about safety-relevant situations. 
+
+<hr>
+
+# Experiments and Results
+
+#### Distribution Shift Creation 
+
+Animated examples of low-scored scenes, where lower interactivity and less conflict regions appear in the scene. 
+<p align="center">
+  <img width="400" src="/assets/posts/2024-05-13-safeshift/score-1.646.gif" alt="Scores">
+  <img width="400" src="/assets/posts/2024-05-13-safeshift/score-8.414.gif" alt="Scores">
+</p>
+
+Animated examples of high-scored scenes, where more complex interactions and manuevers, higher agent density and diversity, and more conflict regions are observed.
+<p align="center">
+  <img width="400" src="/assets/posts/2024-05-13-safeshift/score-34.579.gif" alt="Scores">
+  <img width="400" src="/assets/posts/2024-05-13-safeshift/score-103.49.gif" alt="Scores">
+</p>
+
+#### Distribution Shift Results
+
+We compare our data splitting approach (Scoring) against a random splitting approach (Uniform) and a cluster-based domain normalization approach (Clusters). 
+
+Here, we show that our method **incurs a higher collision rate** compared to splitting methods that do not focus on safety. 
+
+<p align="center">
+  <img width="800" src="/assets/posts/2024-05-13-safeshift/shift_results.png" alt="Scores">
+</p>
+
+
+#### Remediation Results
+
+We compare our remediation approach against an unremediated baseline and Frenet+ (F+), a strategy that conditions prediction models on information projected to a Frenet frame. We show that our remediation strategy was the most effective in reducing collision rates on the tested models, achieving an average 10% reduction. 
+
+<p align="center">
+  <img width="800" src="/assets/posts/2024-05-13-safeshift/rem_results.png" alt="Scores">
+</p>
+
+Qualitatively, we show that the unremediated model and the F+ strategy result in future modes that collide with an external agent. Meanwhile, our remediation approach avoids collisions, while still having reasonable mode diversity and lane conformance.
+
+<p align="center">
+  <img width="1100" src="/assets/posts/2024-05-13-safeshift/remediation_results.png" alt="Scores">
+</p>
+
+<hr>
+
+# BibTeX
+
+```
+@article{stoler2023safeshift,
+  title={SafeShift: Safety-Informed Distribution Shifts for Robust Trajectory Prediction in Autonomous Driving},
+  author={Stoler, Benjamin and Navarro, Ingrid and Jana, Meghdeep and Hwang, Soonmin and Francis, Jonathan and Oh, Jean},
+  journal={arXiv preprint arXiv:2309.08889},
+  year={2023}
+}
+```
