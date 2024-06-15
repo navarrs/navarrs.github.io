@@ -2,12 +2,12 @@
 layout: post
 author: Ingrid Navarro
 permalink: /amelia-dataset/
-title: Amelia-48
-image: /assets/posts/2024-06-14-amelia-dataset/klax.gif
+title: Amelia
+image: /assets/posts/2024-06-14-amelia-dataset/klax_header.gif
 link-new-tab: true
 categories: publication
-hero_image: /assets/img/background.gif
-hero_height: is-small
+hero_image: /assets/posts/2024-06-14-amelia-dataset/klax.png
+hero_height: is-large
 ---
 
 <h1> 
@@ -21,9 +21,9 @@ Zelin Ye, Jong Hoon Park, [Jean Oh](https://cmubig.github.io/team/jean_oh/) and 
 
 **This work is a collaboration between the Bot Intelligence Group ([BIG](https://cmubig.github.io)) and the [AirLab](https://theairlab.org) at Carnegie Mellon University!**
 
-<a class="button" itemprop="github" href="https://github.com/cmubig/AmeliaTF" target="_blank">
-  <i class="fab fa-github fa-lg"></i>
-</a>
+<a class="button" itemprop="paper" href="https://arxiv.org/pdf/2309.08889" target="_blank">
+  <i class="fas fa-database fa-lg"></i>    
+</a> 
 <a class="button" itemprop="paper" href="https://arxiv.org/pdf/2309.08889" target="_blank">
   <i class="fas fa-file fa-lg"></i>    
 </a> 
@@ -37,14 +37,147 @@ Information Management (SWIM) Surface Movement Event Service (SMES). With data c
 in December 2022, the ~30TB dataset currently provides a year's worth of data and covers 48 airports 
 and TRACON facilities within the US National Airspace System. 
 
-We release this dataset along with its toolkit to encourage research in this domain! Below we an overview of our 
-dataset and data processing toolkit. 
+We release this dataset along with its toolkit to encourage research in this domain! 
 
-For details on our trajectory forecasting model, go to [Amelia-TF](https://navars.xyz/amelia-tf).
+Below we provide an overview of our dataset and data processing toolkit. For details on our 
+trajectory forecasting model, go to [Amelia-TF](https://navars.xyz/amelia-model).
 
 And for even more details, please check out our paper! 
 
-<br>
+# Overview of Our Framework
+
+Our framework consists of 7 tools for processing, analyzing, visualizing and characterizing 
+trajectory and map data for airport surface operations.  
+
+<p align="center">
+  <img width="1280" src="/assets/posts/2024-06-14-amelia-dataset/amelia_framework.png" >
+</p>
+
+
+# Tools
+
+<h3>Amelia-<span style="color:#e06666;">SWIM</span>
+<span class="button" itemprop="github" href="https://github.com/castacks/AmeliaSWIM" target="_blank">
+  <i class="fab fa-github fa-lg"></i>
+</span> 
+</h3>
+
+<b>Amelia-<span style="color:#e06666;">SWIM</span></b> is a tool that uses the System Wide Information 
+Management (SWIM) program to collect position reports for aircraft and vehicles operating within 48 
+US airports. 
+
+The tool produces clean, interpolated data in formats accepted by most recent ML-based trajectory 
+forecasting dataloaders. The collected position reports cover both, approaching and ground movement 
+events which are saved into hourly CSV files containing the following information:
+
+<table align="center">
+  <tr>
+  <tr>
+    <td><b>Field</b></td>
+    <td><b>Unit</b></td>
+    <td><b>Description</b></td>
+  </tr><td>Frame</td><td>#</td><td>Timestamp</td></tr>
+  <tr><td>ID</td><td>#</td><td>STDDS Agent ID</td></tr>
+  <tr><td>Range</td><td>km</td><td>Distance from airport datum</td></tr>
+  <tr><td>Bearing</td><td>rads</td><td>Bearing angle w.r.t North</td></tr>
+  <tr><td>Altitude</td><td>feet</td><td>Agent altitude (Mean Sea Level)</td></tr>
+  <tr><td>Speed</td><td>knots</td><td>Agent speed</td></tr>
+  <tr><td>Heading</td><td>degrees</td><td>Agent heading</td></tr>
+  <tr><td>Type</td><td>int</td><td>Agent type: {0: aircraft 1: vehicle, 2: unknown}</td></tr>
+  <tr><td>Lat</td><td>decimal degrees</td><td>Agent's latitude</td></tr>
+  <tr><td>Lon</td><td>decimal degrees</td><td>Agent's longitude</td></tr>
+  <tr><td>x</td><td>km</td><td>Agent's local x Cartesian position</td></tr>
+  <tr><td>y</td><td>km</td><td>Agent's local y Cartesian position</td></tr>
+  <tr><td>Interp</td><td>boolean</td><td>Interpolated data point flag</td></tr>
+</table>
+
+<hr>
+
+<h3>Amelia-<span style="color:#20948b;">Maps</span>
+<span class="button" itemprop="github" href="https://github.com/castacks/AmeliaMaps" target="_blank">
+  <i class="fab fa-github fa-lg"></i>
+</span> 
+</h3>
+
+We use the <b>Amelia-<span style="color:#20948b;">Maps</span></b> tool to collect and produce airport 
+surface maps. 
+
+The tools converts OpenStreetMap (OSM) maps into light-weight, graph-based semantic 
+maps through a series of automated steps that involve <b>a)</b> obtaining the raw graphs from OSM, <b>b)</b> 
+filtering out irrelevant regions and assigning semantic labels for regions of interest, <b>c)</b> extending 
+regions of interest, <b>d)</b> supersampling for obtaining a finer granularity, and <b>e)</b> obtaining the final 
+data representation. 
+
+<p align="center">
+  <img width="1280" src="/assets/posts/2024-06-14-amelia-dataset/map_processing.gif" >
+</p>
+
+<hr>
+
+<h3>Amelia-<span style="color:#3c78d8;">DataTools</span>
+<span class="button" itemprop="github" href="https://github.com/castacks/AmeliaDataTools" target="_blank">
+  <i class="fab fa-github fa-lg"></i>
+</span> 
+</h3>
+
+We provide <b>Amelia-<span style="color:#3c78d8;">DataTools</span></b> to validate and analyze our collected and pre-processed data via a set of scripts that provide visualizations and data statistics. 
+
+As an initial step, we validate and analyze the trajectory and map data for **10 airports** with varying topological complexity and crowdedness:
+
+<style>
+.mySlides {display:none;}
+</style>
+<body>
+
+<div class="w3-content w3-display-container">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_panc.png" style="width:100%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kbos.png" style="width:100%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kdca.png" style="width:100%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kewr.png" style="width:100%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kjfk.png" style="width:100%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_klax.png" style="width:100%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kmdw.png" style="width:100%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kmsy.png" style="width:100%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_ksea.png" style="width:100%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_ksfo.png" style="width:100%">
+
+  <button class="w3-button w3-black w3-display-left w3-small" onclick="plusDivs(-1)">&#10094;</button>
+  <button class="w3-button w3-black w3-display-right w3-small" onclick="plusDivs(1)">&#10095;</button>
+</div>
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+
+<hr>
+
+<h3>Amelia-<span style="color:#e69138;">Scenes</span>
+<span class="button" itemprop="github" href="https://github.com/castacks/AmeliaScenes" target="_blank">
+  <i class="fab fa-github fa-lg"></i>
+</span> 
+</h3>
+
+We use <b>Amelia-<span style="color:#e69138;">Scenes</span></b> to extract scenes from the raw CSV
+files. Our scene extraction is easily configurable to obtain different types of scenes in terms of 
+number of agents of interest, scene length, and point-to-point granularity. 
+
+<br><br>
 
 <table align="center">
   <tr>
@@ -57,181 +190,50 @@ And for even more details, please check out our paper!
   </tr>
 </table>
 
-<table align="center">
-  <tr>
-    <td><b>Los Angeles International Airport (KLAX)</b></td>
-  </tr>
-  <tr>
-    <td><img src="/assets/posts/2024-06-14-amelia-dataset/klax.gif" width=1300 ></td>
-  </tr>
-</table>
+We also provide scene characterization tools to analyze scene complexity w.r.t individual agent 
+kinematic profiles, as well as level of agent-to-agent interactivity and crowdedness. 
 
+<br><br>
 
-### Overview of Our Framework
+The resulting scenes can be used for several downstream tasks such as **trajectory forecasting**. 
 
-<p align="center">
-  <img width="1280" src="/assets/posts/2024-06-14-amelia-dataset/amelia_framework.png" alt="SafeShift">
-</p>
+<br><br>
 
-
-# Tools
-
-
-Scenarios sampled from real-world datasets are often deemed benign, generally lacking diverse safety-critical situations essential for developing robust models for trajectory prediction. 
-
-Thus, existing approaches for validating autonomous driving (AD) agents have resorted to:
-* **On-road tests**, where valuable rare events are potentially dangerous to other drivers and vulnerable road users. 
-* **Simulated experiments**, where artificial, inaccurate behaviors can leave models unprepared for real-world deployment.  
-* **Data-driven scenario generation**, where generating realistic and challenging scenarios remains an open problem.
-
-### Motivating Example
-
-An effective and under-explored alternative lies somewhere in the middle: **mining large-scale real-world datasets to find and leverage meaningful safety-relevant scenarios that may be hidden in the data**. 
-
-Our key insight is that safety-relevance includes not just scenarios where observed agents act in a safety-critical manner, **but also scenarios where agents are able to avoid infractions through proactive maneuvers**. 
-
-A motivating example is shown in the figure below, where the yellow vehicle makes an aggressive lane change in front of another vehicle. Here, we showcase two possible outcomes:
-* A **safe outcome**, where the red vehicle proactively slows down to avoid a collision with the yellow vehicle, and;
-* An **unsafe outcome**, where the red vehicle was distracted, and thus, fails to anticipate the yellow vehicle's lane change. 
-
-<p align="center">
-  <img width="1280" src="/assets/posts/2024-05-13-safeshift/example.png" alt="SafeShift">
-</p>
-
-### Our idea
-We propose **SafeShift**, an framework consisting of: 
-1. A **scenario characterization** approach focused on capturing safety-relevant scenarios naively overlooked in real-world datasets, e.g., near collisions and proactive maneuvers. 
-2. A methodology for **scoring safety-criticality** which utilizes the scenario features in 1 via counterfactual probing to characterize <i>what-if</i> situations.
-3. Two **downstream applications**: crafting a safety-informed distribution shift and improving the robustness of trajectory prediction models. 
-
-<p align="center">
-  <img width="1280" src="/assets/posts/2024-05-13-safeshift/model.png" alt="SafeShift">
-</p>
 
 <hr>
 
-# Method
+<h3>Amelia-<span style="color:#c27ba0;">Viz</span></h3>
 
-### Scenario Characterization 
-
-We propose a **scenario characterization** scheme, where low-level features are computed within a scenario and then aggregated to form a score to represent a scenario’s overall safety-relevance. We consider features across two categories:
-
-* **Individual features** which characterize single-agent state and behavior, including:
-  * Features derived from positional data: speed, acceleation and jerk;
-  * Context-dependent features: waiting period at a conflict point (e.g., waiting at intersections and stop signs), agent speed difference with lane's limit speed, and adherence to a lane, and;
-  * Behavior features: trajectory anomalies. 
-* **Social features** which characterize agent-to-agent interactions:
-  * Time-to-conflict features: time headway (THW), time-to-collision (TTC), deceleration rate to avoid a crash (DRAC) and minimum time to conflict point (mTTCP);
-  * Collision features: collision rate, segement-to-segment overlap, and;
-  * Behavior features: trajectory-pair anomalies.  
-
-We perform a feature correlation analysis, showing that our selected features are largely complementary,
-without excessive overlap in coverage.
-<p align="center">
-  <img width="1100" src="/assets/posts/2024-05-13-safeshift/corrmats.png" alt="CorrMats">
-</p>
-
-### Scenario Scoring
-
-We linearly weigh the above features to compute **individual** and **social** scores for a given agent.
-
-<p align="center">
-  <img width="1000" src="/assets/posts/2024-05-13-safeshift/indsoc_scores.png" alt="Scores">
-</p>
-
-These scores are then combined to form an overall **trajectory score**, and finally a scene score representing the density-normalized sum of all trajectory scores.
-<p align="center">
-  <img width="500" src="/assets/posts/2024-05-13-safeshift/traj_scores.png" alt="Scores">
-</p>
-
-We perform **counterfactual extrapolation and re-scoring** by emulating agents maintaining forward progress in their lanes, without reactivity (e.g., representing the behavior of a distracted driver).
-These **future extrapolated** trajectories are combined with ground truth trajectories as follows, resulting in the desired long tail distribution 
-
-<p align="center">
-  <img width="600" src="/assets/posts/2024-05-13-safeshift/scoring_variations.png" alt="Scores">
-  <img width="450" src="/assets/posts/2024-05-13-safeshift/score_densities.png" alt="Scores">
-</p>
-
-Below, we show an animated example of a counterfactual future extrapolation. Here, the agent of interest is colored in black. On the **left**, we show the **original** scene where the agent anticipates the red traffic light ahead, and thus, reduces speed. On the **right**, we show the **counterfactual** extrapolation where the agent maintains speed, failing to anticipate the traffic light, and thus, collides with the agent ahead.  
-
-<p align="center">
-  <img width="1100" src="/assets/posts/2024-05-13-safeshift/counterfactual.gif" alt="Scores">
-</p>
-
-### Downstream Tasks
-
-We showcase our characterization and scoring methods on two downstream tasks, performed on the Waymo Open Motion Dataset (WOMD): distribution shift creation and robust trajectory prediction. 
-
-#### Distribution Shift Creation 
-
-We split the dataset into an **in-distribution** (ID) set comprising scenarios with low scores, and an **out-of-distribution** (OOD) set comprising the 20% highest scored scenarios.  
-
-<p align="center">
-  <img width="1280" src="/assets/posts/2024-05-13-safeshift/shift.png" alt="Scores">
-</p>
-
-#### Robust Trajectory Prediction
-
-We propose a **remediation strategy** to improve model performance in the OOD scenes. The strategy incorporates the scenario scores into the model’s loss function to increase the prediction model performance: 
-
-<p align="center">
-  <img width="500" src="/assets/posts/2024-05-13-safeshift/score_loss.png" alt="Scores">
-</p>
-
-This loss encourages the model to not treat all scenarios and agents' trajectories as equal and to care about safety-relevant situations. 
+<a class="button" itemprop="github" href="https://github.com/castacks/AmeliaViz" target="_blank">
+  <i class="fab fa-github fa-lg"></i>
+</a> 
 
 <hr>
 
-# Experiments and Results
+<h3>Amelia-<span style="color:#8e7cc3;">TF</span></h3>
 
-#### Distribution Shift Creation 
+<a class="button" itemprop="github" href="https://github.com/castacks/AmeliaTF" target="_blank">
+  <i class="fab fa-github fa-lg"></i>
+</a> 
 
-Animated examples of low-scored scenes, where lower interactivity and less conflict regions appear in the scene. 
-<p align="center">
-  <img width="400" src="/assets/posts/2024-05-13-safeshift/score-1.646.gif" alt="Scores">
-  <img width="400" src="/assets/posts/2024-05-13-safeshift/score-8.414.gif" alt="Scores">
-</p>
+<hr>
 
-Animated examples of high-scored scenes, where more complex interactions and manuevers, higher agent density and diversity, and more conflict regions are observed.
-<p align="center">
-  <img width="400" src="/assets/posts/2024-05-13-safeshift/score-34.579.gif" alt="Scores">
-  <img width="400" src="/assets/posts/2024-05-13-safeshift/score-103.49.gif" alt="Scores">
-</p>
+<h3>Amelia-<span style="color:#ea738d;">Inference</span></h3>
 
-#### Distribution Shift Results
-
-We compare our data splitting approach (Scoring) against a random splitting approach (Uniform) and a cluster-based domain normalization approach (Clusters). 
-
-Here, we show that our method **incurs a higher collision rate** compared to splitting methods that do not focus on safety. 
-
-<p align="center">
-  <img width="800" src="/assets/posts/2024-05-13-safeshift/shift_results.png" alt="Scores">
-</p>
-
-
-#### Remediation Results
-
-We compare our remediation approach against an unremediated baseline and Frenet+ (F+), a strategy that conditions prediction models on information projected to a Frenet frame. We show that our remediation strategy was the most effective in reducing collision rates on the tested models, achieving an average 10% reduction. 
-
-<p align="center">
-  <img width="800" src="/assets/posts/2024-05-13-safeshift/rem_results.png" alt="Scores">
-</p>
-
-Qualitatively, we show that the unremediated model and the F+ strategy result in future modes that collide with an external agent. Meanwhile, our remediation approach avoids collisions, while still having reasonable mode diversity and lane conformance.
-
-<p align="center">
-  <img width="1100" src="/assets/posts/2024-05-13-safeshift/remediation_results.png" alt="Scores">
-</p>
+<a class="button" itemprop="github" href="https://github.com/castacks/AmeliaStandalone" target="_blank">
+  <i class="fab fa-github fa-lg"></i>
+</a> 
 
 <hr>
 
 # BibTeX
 
 ```
-@article{stoler2023safeshift,
-  title={SafeShift: Safety-Informed Distribution Shifts for Robust Trajectory Prediction in Autonomous Driving},
-  author={Stoler, Benjamin and Navarro, Ingrid and Jana, Meghdeep and Hwang, Soonmin and Francis, Jonathan and Oh, Jean},
+@article{navarro2024amelia,
+  title={Amelia: A Large Model and Dataset for Airport Surface
+Movement Forecasting},
+  author={Nasvarro, Ingrid and Ortega-Kral, Pablo and Patrikar, Jay, and Haichuan, Wang and Park, Jong Hoon and Oh, Jean and Scherer, Sebastian},
   journal={arXiv preprint arXiv:2309.08889},
-  year={2023}
+  year={2024}
 }
 ```
