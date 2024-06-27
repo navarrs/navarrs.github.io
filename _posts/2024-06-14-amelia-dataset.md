@@ -2,11 +2,11 @@
 layout: post
 author: Ingrid Navarro
 permalink: /amelia-dataset/
-title: Amelia
-image: /assets/posts/2024-06-14-amelia-dataset/klax_header.gif
+title: Amelia Dataset
+image: /assets/posts/2024-06-14-amelia-dataset/klax.gif
 link-new-tab: true
 categories: publication
-hero_image: /assets/posts/2024-06-14-amelia-dataset/klax.png
+hero_image: /assets/posts/2024-06-14-amelia-dataset/klax_header.gif
 hero_height: is-large
 ---
 
@@ -53,6 +53,9 @@ trajectory and map data for airport surface operations.
   <img width="1280" src="/assets/posts/2024-06-14-amelia-dataset/amelia_framework.png" >
 </p>
 
+# Downloading our Dataset
+
+TODO
 
 # Tools
 
@@ -127,22 +130,23 @@ As an initial step, we validate and analyze the trajectory and map data for **10
 <style>
 .mySlides {display:none;}
 </style>
-<body>
 
-<div class="w3-content w3-display-container">
-  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_panc.png" style="width:100%">
-  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kbos.png" style="width:100%">
-  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kdca.png" style="width:100%">
-  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kewr.png" style="width:100%">
-  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kjfk.png" style="width:100%">
-  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_klax.png" style="width:100%">
-  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kmdw.png" style="width:100%">
-  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kmsy.png" style="width:100%">
-  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_ksea.png" style="width:100%">
-  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_ksfo.png" style="width:100%">
+<div align="center">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_panc.png" style="width:90%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kbos.png" style="width:90%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kdca.png" style="width:90%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kewr.png" style="width:90%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kjfk.png" style="width:90%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_klax.png" style="width:90%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kmdw.png" style="width:90%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_kmsy.png" style="width:90%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_ksea.png" style="width:90%">
+  <img class="mySlides" src="/assets/posts/2024-06-14-amelia-dataset/data_ksfo.png" style="width:90%">
 
-  <button class="w3-button w3-black w3-display-left w3-small" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="w3-button w3-black w3-display-right w3-small" onclick="plusDivs(1)">&#10095;</button>
+  <div align="center">
+    <button class="button-slide" onclick="plusDivs(-1)">&#10094;</button>
+    <button class="button-slide" onclick="plusDivs(1)">&#10095;</button>
+  </div>
 </div>
 
 <script>
@@ -177,7 +181,8 @@ We use <b>Amelia-<span style="color:#e69138;">Scenes</span></b> to extract scene
 files. Our scene extraction is easily configurable to obtain different types of scenes in terms of 
 number of agents of interest, scene length, and point-to-point granularity. 
 
-<br><br>
+We also provide scene characterization tools to analyze scene complexity w.r.t individual agent 
+kinematic profiles, as well as level of agent-to-agent interactivity and crowdedness. 
 
 <table align="center">
   <tr>
@@ -190,43 +195,55 @@ number of agents of interest, scene length, and point-to-point granularity.
   </tr>
 </table>
 
-We also provide scene characterization tools to analyze scene complexity w.r.t individual agent 
-kinematic profiles, as well as level of agent-to-agent interactivity and crowdedness. 
-
-<br><br>
-
-The resulting scenes can be used for several downstream tasks such as **trajectory forecasting**. 
-
-<br><br>
-
+The resulting scenes can be used for several downstream tasks such as <b>trajectory forecasting</b>. 
 
 <hr>
 
-<h3>Amelia-<span style="color:#c27ba0;">Viz</span></h3>
-
-<a class="button" itemprop="github" href="https://github.com/castacks/AmeliaViz" target="_blank">
+<h3>Amelia-<span style="color:#c27ba0;">Viz</span>
+<span class="button" itemprop="github" href="https://github.com/castacks/AmeliaViz" target="_blank">
   <i class="fab fa-github fa-lg"></i>
-</a> 
+</span> 
+</h3>
+
+<b>Amelia-<span style="color:#c27ba0;">Viz</span></b> provides scripts for creating visualizations 
+for ground truth scenes and model predictions. 
+
+<table align="center">
+  <tr>
+    <td><img src="/assets/posts/2024-06-14-amelia-dataset/predictions-1.gif" width=650 ></td>
+    <td><img src="/assets/posts/2024-06-14-amelia-dataset/predictions-2.gif" width=650 ></td>
+  </tr>
+</table>
 
 <hr>
 
-<h3>Amelia-<span style="color:#8e7cc3;">TF</span></h3>
-
-<a class="button" itemprop="github" href="https://github.com/castacks/AmeliaTF" target="_blank">
+<h3>Amelia-<span style="color:#8e7cc3;">TF</span>
+<span class="button" itemprop="github" href="https://github.com/castacks/AmeliaTF" target="_blank">
   <i class="fab fa-github fa-lg"></i>
-</a> 
+</span> 
+</h3>
+
+We provide, <b>Amelia-<span style="color:#8e7cc3;">TF</span></b>, a framework for training and 
+evaluating trajectory forecasting models that uses Hydra + Pytorch Lightning. This framework enables 
+easy integration and implementation of existing and new models.
+
+For more details on our proposed model, check out [Amelia-TF](https://navars.xyz/amelia-model)!
 
 <hr>
 
-<h3>Amelia-<span style="color:#ea738d;">Inference</span></h3>
-
-<a class="button" itemprop="github" href="https://github.com/castacks/AmeliaStandalone" target="_blank">
+<h3>Amelia-<span style="color:#ea738d;">Inference</span>
+<span class="button" itemprop="github" href="https://github.com/castacks/AmeliaStandalone" target="_blank">
   <i class="fab fa-github fa-lg"></i>
-</a> 
+</span> 
+</h3>
+
+Finally, we also release an inference tool for visualizing model predictions. 
 
 <hr>
 
 # BibTeX
+
+If you find our work useful in your research, please cite us!
 
 ```
 @article{navarro2024amelia,

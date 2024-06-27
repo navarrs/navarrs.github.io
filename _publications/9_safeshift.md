@@ -9,7 +9,7 @@ video: null
 thumbnail: assets/img/publications/safeshift.png
 authors: Benjamin Stoler*, <b class="text-primary">Ingrid Navarro*</b>, Meghdeep Jana, Soonmin Hwang, Jonathan Francis, and Jean Oh
 note: "* Equal contribution"
-where: Preprint in ArXiv (Manuscript currently under review for IEEE IV 2024)
+where: IEEE Intelligent Vehicles Symposium, 2024
 id: paper_safeshift
 abstract: "
 As autonomous driving technology matures, safety and robustness of its key components, including 
