@@ -196,10 +196,14 @@ Qualitatively, we show that the unremediated model and the F+ strategy result in
 # BibTeX
 
 ```
-@article{stoler2023safeshift,
-  title={SafeShift: Safety-Informed Distribution Shifts for Robust Trajectory Prediction in Autonomous Driving},
+@INPROCEEDINGS{stoler2024safeshift,
   author={Stoler, Benjamin and Navarro, Ingrid and Jana, Meghdeep and Hwang, Soonmin and Francis, Jonathan and Oh, Jean},
-  journal={arXiv preprint arXiv:2309.08889},
-  year={2023}
-}
+  booktitle={2024 IEEE Intelligent Vehicles Symposium (IV)}, 
+  title={SafeShift: Safety-Informed Distribution Shifts for Robust Trajectory Prediction in Autonomous Driving}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1179-1186},
+  keywords={Meters;Collaboration;Predictive models;Robustness;Iron;Trajectory;Safety},
+  doi={10.1109/IV55156.2024.10588828}}
 ```
