@@ -17,7 +17,7 @@
 
 	{% for pub in site.publications reversed %}
 	<div class="grid-wrapper">
-		<div class="profile center" style="grid-column: span 2; margin:auto;">
+		<div class="profile center" style="grid-column: span 3; margin:auto;">
 			{% if pub.blogpost_link != nil %}
 				<a href="{{ site.base_url | append: pub.blogpost_link }}">
 					<img src="{{ pub.thumbnail }}">
