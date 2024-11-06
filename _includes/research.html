@@ -35,12 +35,12 @@
 			<p style="margin-top:0px;"><i>{{ pub.where }} </i></p>
 			
 			<div class="center">
-				<p><a class="link" href="{{ pub.paper_url }}"> <i class="fa fa-paper-plane fa-lg"></i> </a> 
+				<p><a class="link" href="{{ pub.paper_url }}"> <i class="fa fa-file fa-lg"></i> </a> 
 				{% if pub.code != nil %}
 					| <a class="link" href="{{ pub.code }}"> <i class="fa fa-code fa-lg"></i> </a>
 				{% endif %}
 				{% if pub.poster != nil %}
-					| <a class="link" href="{{ pub.poster }}"> <i class="fa fa-file fa-lg"></i> </a>
+					| <a class="link" href="{{ pub.poster }}"> <i class="fa fa-image fa-lg"></i> </a>
 				{% endif %}
 				{% if pub.video != nil %}
 					| <a class="link" href="{{ pub.video }}"> <i class="fab fa-youtube fa-lg"></i></a> 
