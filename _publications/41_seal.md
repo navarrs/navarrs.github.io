@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "SEAL: Towards Safe Autonomous Driving via Skill-Enabled Adversary Learning for Closed-Loop Scenario Generation"
-blogpost_link: https://cmubig.github.io/seal/
+blogpost_link: /seal/
 paper_url: https://arxiv.org/abs/2409.10320
 poster: null
 code: https://github.com/cmubig/SEAL
