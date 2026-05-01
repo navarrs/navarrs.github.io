@@ -12,26 +12,16 @@ note: "* Equal contribution; ‡Equal Advising"
 where: AIAA Aviation Forum, 2024; <b class="text-primary">Best Student Paper Award.</b>
 id: paper_amelia
 abstract: "
-The growing demand for air travel requires technological advancements in air traffic
-management as well as mechanisms for monitoring and ensuring safe and efficient operations.
-In terminal airspaces, predictive models of future movements and traffic flows can help
-with proactive planning and efficient coordination; however, varying airport topologies, and
-interactions with other agents, among other factors, make accurate predictions challenging. Datadriven predictive models have shown promise for handling numerous variables to enable various
-downstream tasks, including collision risk assessment, taxi-out time prediction, departure
-metering, and emission estimations. While data-driven methods have shown improvements in
-these tasks, prior works lack large-scale curated surface movement datasets within the public
-domain and the development of generalizable trajectory forecasting models. In response to this,
-we propose two contributions: (1) Amelia-48 dataset, a large surface movement dataset collected
-using the System Wide Information Management (SWIM) Surface Movement Event Service
-(SMES). With data collection beginning in December 2022, the Phase1 Amelia-48 dataset
-provides more than a year’s worth of SMES data (∼30TB) and covers 48 airports within the
-US National Airspace System. In addition to releasing this data in the public domain, we also
-provide post-processing scripts and associated airport maps to enable research in the forecasting
-domain and beyond. (2) Amelia-TF model, a transformer-based next-token-prediction large
-multi-agent multi-airport trajectory forecasting model trained on 292 days or 9.4 billion tokens
-of position data encompassing 10 different airports with varying topology. The open-sourced
-Amelia-TF model is validated on unseen airports with experiments showcasing the different
-prediction horizon lengths, ego-agent selection strategies, and training recipes to demonstrate
-the generalization capabilities.
+<p>Demand for air travel is rising, straining existing aviation infrastructure. In the US, more than 90% of airport control towers are understaffed, falling short of FAA and union standards. This, in part, has contributed to an uptick in near-misses and safety-critical events, highlighting the need for advancements in air traffic management technologies to ensure safe and efficient operations. </p>
+
+<p>Data-driven predictive models for terminal airspace show potential to address these challenges; however, the lack of large-scale surface movement datasets in the public domain has hindered the development of scalable and generalizable approaches.</p>
+
+<p>To address this, we introduce <b>Amelia-42</b>, a first-of-its-kind large collection of raw airport
+surface movements reports streamed through the FAA’s System Wide Information Management
+(SWIM) Program, comprising over two years of trajectory data (∼9.19TB) across 42 US airports.
+We open-source tools to process this data into clean tabular position reports. We release
+<b>Amelia42-Mini</b>, a 15-day sample per airport, fully processed data on HuggingFace for ease
+of use. We also present a trajectory forecasting benchmark consisting of <b>Amelia10-Bench</b>, an accessible experiment family using 292 days from 10 airports, as well as <b>Amelia-TF</b>, a
+transformer-based baseline for multi-agent trajectory forecasting. </p>
 "
 ---
