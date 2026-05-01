@@ -8,7 +8,9 @@ collections:
 collections:
   publications:
     output: true
-    
+  projects:
+    output: true
+
 # Build settings
 theme: bulma-clean-theme
 plugins:

@@ -1,0 +1,77 @@
+<link href="assets/css/resume.css" rel="stylesheet">
+
+<script>
+	if (typeof show_abstract !== 'function') {
+		function show_abstract(x) {
+			var x = document.getElementById(x);
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+		}
+	}
+</script>
+
+<div class="container">
+	<h1 class="mb-3">Projects</h1>
+	<br>
+
+	{% for proj in site.projects reversed %}
+	<div class="grid-wrapper">
+		<div class="profile center" style="grid-column: span 3; margin:auto;">
+			{% if proj.blogpost_link != nil %}
+				<a href="{{ site.base_url | append: proj.blogpost_link }}">
+					<img src="{{ proj.thumbnail }}">
+				</a>
+			{% else %}
+				<a href="{{ proj.paper_url }}"><img src="{{ proj.thumbnail }}"></a>
+			{% endif %}
+		</div>
+
+		<div style="grid-column: span 3;">
+			<h4 class="mb-0"> {{ proj.title }} </h4>
+			<br>
+			<p class="blue" style="margin-top:0px; margin-bottom:0px;"> {{ proj.authors }} </p>
+			<p style="margin-top:0px;"><i>{{ proj.note }} </i></p>
+			<p style="margin-top:0px;"><i>{{ proj.where }} </i></p>
+
+			<div class="center">
+				<p>
+				{% assign sep = '' %}
+				{% if proj.paper_url != nil %}
+					<a class="link" href="{{ proj.paper_url }}"> <i class="fa fa-file fa-lg"></i> </a>
+					{% assign sep = '|' %}
+				{% endif %}
+				{% if proj.code != nil %}
+					{{ sep }} <a class="link" href="{{ proj.code }}"> <i class="fa fa-code fa-lg"></i> </a>
+					{% assign sep = '|' %}
+				{% endif %}
+				{% if proj.poster != nil %}
+					{{ sep }} <a class="link" href="{{ proj.poster }}"> <i class="fa fa-image fa-lg"></i> </a>
+					{% assign sep = '|' %}
+				{% endif %}
+				{% if proj.video != nil %}
+					{{ sep }} <a class="link" href="{{ proj.video }}"> <i class="fab fa-youtube fa-lg"></i></a>
+					{% assign sep = '|' %}
+				{% endif %}
+				{% if proj.blogpost_link != nil %}
+					{{ sep }} <a class="link" href="{{ site.base_url | append: proj.blogpost_link }}">
+					  <i class="fa fa-pager fa-lg"></i></a>
+				{% endif %}
+				</p>
+			</div>
+			<br>
+			<div onclick="show_abstract('{{ proj.id }}')">
+				<b class="abstract">Toggle Abstract</b>
+			</div>
+
+			<div id="{{ proj.id }}" style="display:none;">
+				<p class="lead mb-5" align="justify"> {{ proj.abstract }} </p>
+			</div>
+		</div>
+	</div>
+
+	<hr class="small-rule" />
+	{% endfor %}
+</div>

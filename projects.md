@@ -1,19 +1,10 @@
 ---
 layout: page
-title: Ingrid Navarro
-subtitle: PhD Student in Robotics at CMU
-hide_footer: true
-hide_hero: false
+title: Projects
+permalink: /projects/
 hero_height: is-small
 hero_image: /assets/img/background.gif
 ---
 <link href="assets/css/resume.css" rel="stylesheet">
 
-{% include about.html %}
-
-<hr>
-
 {% include projects.html %}
-
-{% include research.html %}
-
