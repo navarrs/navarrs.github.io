@@ -6,7 +6,7 @@ paper_url: https://arxiv.org/abs/2608.16041
 poster: null
 code: https://github.com/navarrs/ScenarioCharacterization
 video: null
-thumbnail: assets/img/publications/scenariocharacterization.png
+thumbnail: assets/img/publications/scenariocharacterization.gif
 authors: <b class="text-primary">Ingrid Navarro†</b>, Yutong Duan, Jonathan Francis‡ and Jean Oh‡
 note: "† Developed in part during an internship at <b>Stack AV</b>; ‡ Equal advising"
 where: Preprint in ArXiv, 2026

@@ -156,6 +156,15 @@ while relevant agents approach and stop behind it. On the bottom, the ego approa
 cyclist initiates a left turn across its path.</i></caption>
 </p>
 
+<p align="center">
+  <img width="1280" src="/assets/posts/2026-08-17-scenario-characterization/scenario_animation.gif" alt="Animated scenario">
+</p>
+<p align="center">
+<caption><i>The same four panes, animated on a single WOMD scenario. From left to right: all agents, relevant
+agents highlighted, agents shaded by criticality, and the counterfactual probe, which perturbs agent 247 and
+raises the pair score against the affected agent 347.</i></caption>
+</p>
+
 For the distributional views below we ran the pipeline over 5,000 scenarios from each of WOMD, Argoverse2 and
 nuPlan. All were standardized to 10 Hz, with agent types mapped onto a common taxonomy.
 
