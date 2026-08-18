@@ -15,15 +15,15 @@ Deep learning-based frameworks have been widely used in object recognition, perc
 navigation tasks, showing outstanding feature extraction capabilities. Nevertheless, the effectiveness 
 of such detectors usually depends on large amounts of training data. For specific object-recognition 
 tasks, it is often difficult and time-consuming to gather enough valuable data. Data Augmentation has 
-been broadly adopted to overcome these difficulties, as it allows to increase the training data and 
+been broadly adopted to overcome these difficulties, as it allows us to increase the training data and 
 introduce variation in qualitative elements like color, illumination, distortion and orientation. In 
-this paper, we leverage on the object detection framework YOLOv2 to evaluate the behavior of an 
+this paper, we leverage the object detection framework YOLOv2 to evaluate the behavior of an 
 obstacle detection system for an autonomous boat designed for the International RoboBoat Competition. 
-We are focused on how the overall performance of a model changes with different augmentation 
+We focus on how the overall performance of a model changes with different augmentation 
 techniques. Thus, we analyze the features that the network learns by using geometric and pixel-wise 
 transformations to augment our data. Our instances of interest are buoys and sea markers, thus to 
 generate training data comprising these classes, we simulated the aquatic surface of the boat and 
-collected data from the COCO dataset. Finally, we discuss that significant generalization is achieved 
+collected data from the COCO dataset. Finally, we show that significant generalization is achieved 
 in the learning process of our experiments using different augmentation techniques.
 "
 ---

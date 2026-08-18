@@ -3,12 +3,7 @@ url: "https://navars.xyz" # the base hostname & protocol for your site, e.g. htt
 github_username:  navarrs
 
 collections:
-  - publications
-
-collections:
   publications:
-    output: true
-  projects:
     output: true
 
 # Build settings
@@ -18,10 +13,12 @@ plugins:
 
 favicon: assets/img/paper-plane.png
 show_sidebar: false
-menubar: research_menu
 hide_footer: true
 
 exclude:
+  - bin/ # local dev scripts, not part of the site
+  - README.md
+  - LOCAL-DEV.md # private notes; gitignored, never publish even in a local build
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/

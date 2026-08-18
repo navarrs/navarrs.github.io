@@ -20,8 +20,8 @@ include detecting different types of wheelchairs in cluttered environments and f
 angles. We explore region-based Convolutional Neural Networks (R-CNN), in particular Faster R-CNN, 
 as it has become one of the top performers for object detection tasks. We evaluate the performance of 
 different training techniques using two Faster R-CNN frameworks and different backbone network 
-structures. Furthermore, we present how we empirically addressed some of the preceding limitations by
-applying specific data augmentation techniques and constraints to our model. We demonstrate that using a region-
+structures. Furthermore, we show how we empirically addressed some of the preceding limitations by
+applying specific data augmentation techniques and constraints to our model. We demonstrate that a region-
 based implementation outperforms previous approaches in terms of overall robustness, accuracy and 
 flexibility.
 "

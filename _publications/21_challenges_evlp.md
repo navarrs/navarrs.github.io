@@ -7,14 +7,14 @@ code: null
 video: null
 thumbnail: assets/img/publications/evlp.png
 authors: Jonathan Francis*, Nariaki Kitamura*, Felix Labelle*, Xiaopen Lu*, <b class="text-primary">Ingrid Navarro*</b> and Jean Oh
-note: \* Equal contribution, ordered alphabetically.
+note: "* Equal contribution; authors ordered alphabetically"
 where: Journal of Artificial Intelligence Research (JAIR), 2022
 id: paper_evlp
 abstract: "
 Recent advances in the areas of multimodal machine learning and artificial intelligence (AI) have 
 led to the development of challenging tasks at the intersection of Computer Vision, Natural Language 
-Processing, and Embodied AI. Whereas many approaches and previous survey pursuits have characterised 
-one or two of these dimensions, there has not been a holistic analysis at the center of all three. 
+Processing, and Embodied AI. Whereas many approaches and previous survey pursuits have characterized 
+one or two of these dimensions, there has not been a holistic analysis at the intersection of all three. 
 Moreover, even when combinations of these topics are considered, more focus is placed on describing, 
 e.g., current architectural methods, as opposed to also illustrating high-level challenges and 
 opportunities for the field. In this survey paper, we discuss Embodied Vision-Language Planning (EVLP)

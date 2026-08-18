@@ -1,0 +1,204 @@
+#!/usr/bin/env bash
+#
+# Preview the site locally at http://localhost:4000
+#
+#   ./bin/serve              # run in the foreground (ctrl-c to stop)
+#   ./bin/serve --detach     # run in the background; outlives this shell
+#   ./bin/serve --status     # is it running? where?
+#   ./bin/serve --logs       # follow the log of a backgrounded server
+#   ./bin/serve --stop       # stop a backgrounded server
+#   ./bin/serve --build      # build once into _site/ and exit, no server
+#
+#   --port N                 # default 4000; livereload follows at N + 31729
+#   --public                 # bind all interfaces instead of localhost only
+#   --docker | --native      # force a mode; default is native if Ruby is present
+#
+set -euo pipefail
+
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# Matches the Ruby pinned in .github/workflows/jekyll.yml. Keep them in sync.
+RUBY_IMAGE="ruby:3.1"
+# Matches "BUNDLED WITH" in Gemfile.lock, so bundler doesn't rewrite that line.
+BUNDLER_VERSION="2.5.7"
+CONTAINER_NAME="navars-site"
+PIDFILE="$REPO_ROOT/.jekyll-cache/serve.pid"
+LOGFILE="$REPO_ROOT/.jekyll-cache/serve.log"
+
+PORT="4000"
+BIND="127.0.0.1"
+MODE="auto"
+ACTION="serve"
+DETACH="no"
+
+usage() { sed -n '3,17p' "${BASH_SOURCE[0]}" | sed 's/^#\s\?//'; }
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --docker) MODE="docker"; shift ;;
+    --native) MODE="native"; shift ;;
+    --build)  ACTION="build"; shift ;;
+    --status) ACTION="status"; shift ;;
+    --logs)   ACTION="logs"; shift ;;
+    --stop)   ACTION="stop"; shift ;;
+    --detach|-d) DETACH="yes"; shift ;;
+    --public) BIND="0.0.0.0"; shift ;;
+    --port)   PORT="${2:?--port needs a number}"; shift 2 ;;
+    -h|--help) usage; exit 0 ;;
+    *) echo "unknown option: $1" >&2; usage >&2; exit 1 ;;
+  esac
+done
+
+# Livereload's websocket port, derived from the main port so two people on a
+# shared machine don't collide on the default 35729.
+LR_PORT=$((PORT + 31729))
+
+cd "$REPO_ROOT"
+mkdir -p .jekyll-cache
+
+is_detached_native() { [[ -f "$PIDFILE" ]] && kill -0 "$(cat "$PIDFILE")" 2>/dev/null; }
+is_detached_docker() { [[ -n "$(docker ps -q -f "name=^${CONTAINER_NAME}$" 2>/dev/null)" ]]; }
+
+# A previous server (foreground or detached) may still own the container name.
+# Running one: say so usefully. Dead one: it's just litter, clear it.
+ensure_container_name_free() {
+  if is_detached_docker; then
+    echo "A preview server is already running (container $CONTAINER_NAME)." >&2
+    echo "  ./bin/serve --status   where it is" >&2
+    echo "  ./bin/serve --logs     follow it" >&2
+    echo "  ./bin/serve --stop     stop it, then start again" >&2
+    exit 1
+  fi
+  local stale
+  stale="$(docker ps -aq -f "name=^${CONTAINER_NAME}$" 2>/dev/null || true)"
+  [[ -n "$stale" ]] && docker rm "$stale" >/dev/null 2>&1 || true
+  return 0
+}
+
+# On a shared machine someone else may already hold the port.
+warn_if_port_taken() {
+  local p="$1"
+  if (ss -tln 2>/dev/null || netstat -tln 2>/dev/null) | grep -qE ":$p\b"; then
+    echo "note: something is already listening on port $p." >&2
+    echo "      if this fails, try ./bin/serve --port $((p + 1))" >&2
+  fi
+}
+
+case "$ACTION" in
+  stop)
+    stopped="no"
+    if is_detached_docker; then docker rm -f "$CONTAINER_NAME" >/dev/null; echo "stopped container $CONTAINER_NAME"; stopped="yes"; fi
+    if is_detached_native; then kill "$(cat "$PIDFILE")" && rm -f "$PIDFILE"; echo "stopped local jekyll"; stopped="yes"; fi
+    [[ "$stopped" == "no" ]] && echo "nothing running (started in the foreground? use ctrl-c there)"
+    exit 0 ;;
+  logs)
+    if is_detached_docker; then exec docker logs -f "$CONTAINER_NAME"; fi
+    if [[ -f "$LOGFILE" ]]; then exec tail -f "$LOGFILE"; fi
+    echo "no detached server running; nothing to tail" >&2; exit 1 ;;
+  status)
+    if is_detached_docker; then
+      echo "running (docker, container $CONTAINER_NAME)"
+      docker port "$CONTAINER_NAME" 2>/dev/null | sed 's/^/  /'
+    elif is_detached_native; then
+      echo "running (local jekyll, pid $(cat "$PIDFILE"))"
+    else
+      echo "not running in the background"
+    fi
+    echo "--- listening ports ---"
+    (ss -tln 2>/dev/null || netstat -tln 2>/dev/null) | grep -E ":($PORT|$LR_PORT)\b" || echo "  nothing on $PORT / $LR_PORT"
+    code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 3 "http://127.0.0.1:$PORT/" 2>/dev/null || true)
+    echo "--- http://127.0.0.1:$PORT/ -> $code ---"
+    exit 0 ;;
+esac
+
+if [[ "$MODE" == "auto" ]]; then
+  if command -v bundle >/dev/null 2>&1; then MODE="native"; else MODE="docker"; fi
+fi
+
+if [[ "$ACTION" == "build" ]]; then
+  DETACH="no"
+  JEKYLL_ARGS="build"
+else
+  # Inside Docker jekyll must bind 0.0.0.0 so docker-proxy can reach it; the
+  # host-side binding is what actually restricts access (see -p below).
+  jekyll_host="$BIND"
+  [[ "$MODE" == "docker" ]] && jekyll_host="0.0.0.0"
+  JEKYLL_ARGS="serve --host $jekyll_host --port $PORT --livereload --livereload-port $LR_PORT"
+fi
+
+if [[ "$BIND" == "0.0.0.0" && "$ACTION" != "build" ]]; then
+  echo "!! --public: exposing port $PORT on every interface of $(hostname)."
+  echo "!! On a shared or internet-facing machine, prefer SSH forwarding instead."
+fi
+
+if [[ "$MODE" == "native" ]]; then
+  command -v bundle >/dev/null 2>&1 || {
+    echo "bundler not found. Install Ruby 3.1-3.3, or run: ./bin/serve --docker" >&2; exit 1; }
+  [[ "$ACTION" != "build" ]] && warn_if_port_taken "$PORT"
+  bundle config set --local path vendor/bundle
+  bundle install
+  if [[ "$DETACH" == "yes" ]]; then
+    is_detached_native && { echo "already running (pid $(cat "$PIDFILE")); ./bin/serve --stop first"; exit 1; }
+    nohup bundle exec jekyll $JEKYLL_ARGS > "$LOGFILE" 2>&1 &
+    echo $! > "$PIDFILE"
+    sleep 2
+    echo "==> serving in the background on http://localhost:$PORT  (pid $(cat "$PIDFILE"))"
+    echo "==> ./bin/serve --logs to follow, --stop to stop"
+    exit 0
+  fi
+  [[ "$ACTION" == "serve" ]] && echo "==> http://localhost:$PORT"
+  exec bundle exec jekyll $JEKYLL_ARGS
+fi
+
+command -v docker >/dev/null 2>&1 || {
+  echo "Neither bundler nor docker found. Install one of them (see README.md)." >&2; exit 1; }
+
+# Why these flags:
+#   --user            keeps _site/, .jekyll-cache/ and vendor/ owned by you, not root
+#   HOME=/tmp         that uid has no home dir in the container; rubygems needs one
+#   GEM_HOME +        both point into vendor/bundle, which is already gitignored AND
+#   BUNDLE_PATH       already in the exclude: list in _config.yml
+#   -p $BIND:...      publishes on localhost only unless --public was passed
+DOCKER_ARGS=(
+  --rm
+  --user "$(id -u):$(id -g)"
+  -e HOME=/tmp
+  -e GEM_HOME=/srv/vendor/bundle
+  -e BUNDLE_PATH=/srv/vendor/bundle
+  -v "$REPO_ROOT":/srv -w /srv
+)
+# Only a server claims the shared name and the ports; --build is ephemeral and
+# must be able to run while a server is up.
+if [[ "$ACTION" != "build" ]]; then
+  DOCKER_ARGS+=(--name "$CONTAINER_NAME" -p "$BIND:$PORT:$PORT" -p "$BIND:$LR_PORT:$LR_PORT")
+fi
+
+CONTAINER_CMD='
+  set -e
+  export PATH="$GEM_HOME/bin:$PATH"
+  gem list -i bundler -v '"$BUNDLER_VERSION"' >/dev/null 2>&1 \
+    || gem install bundler -v '"$BUNDLER_VERSION"' --no-document
+  bundle install
+  exec bundle exec jekyll '"$JEKYLL_ARGS"'
+'
+
+if [[ "$ACTION" != "build" ]]; then
+  ensure_container_name_free
+  warn_if_port_taken "$PORT"
+fi
+
+if [[ "$DETACH" == "yes" ]]; then
+  docker run -d "${DOCKER_ARGS[@]}" "$RUBY_IMAGE" bash -c "$CONTAINER_CMD" >/dev/null
+  echo "==> starting in the background (first run installs gems, up to a few minutes)"
+  for i in $(seq 1 180); do
+    curl -sf -o /dev/null --max-time 2 "http://127.0.0.1:$PORT/" && { echo "==> up at http://localhost:$PORT"; break; }
+    is_detached_docker || { echo "container exited; see ./bin/serve --logs" >&2; exit 1; }
+    sleep 1
+  done
+  echo "==> ./bin/serve --logs to follow, --stop to stop, --status to check"
+  exit 0
+fi
+
+TTY_FLAGS=(-i); [[ -t 1 ]] && TTY_FLAGS=(-i -t)
+[[ "$ACTION" == "serve" ]] && echo "==> http://localhost:$PORT (ctrl-c to stop)"
+exec docker run "${TTY_FLAGS[@]}" "${DOCKER_ARGS[@]}" "$RUBY_IMAGE" bash -c "$CONTAINER_CMD"

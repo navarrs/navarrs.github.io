@@ -19,7 +19,7 @@
 	<div class="grid-wrapper">
 		<div class="profile center" style="grid-column: span 3; margin:auto;">
 			{% if pub.blogpost_link != nil %}
-				<a href="{{ site.base_url | append: pub.blogpost_link }}">
+				<a href="{{ site.baseurl | append: pub.blogpost_link }}">
 					<img src="{{ pub.thumbnail }}">
 				</a>
 			{% else %}
@@ -31,23 +31,35 @@
 			<h4 class="mb-0"> {{ pub.title }} </h4>
 			<br>
 			<p class="blue" style="margin-top:0px; margin-bottom:0px;"> {{ pub.authors }} </p>
-			<p style="margin-top:0px;"><i>{{ pub.note }} </i></p>
-			<p style="margin-top:0px;"><i>{{ pub.where }} </i></p>
-			
+			{% if pub.note != nil %}
+				<p style="margin-top:0px;"><i>{{ pub.note }} </i></p>
+			{% endif %}
+			{% if pub.where != nil %}
+				<p style="margin-top:0px;"><i>{{ pub.where }} </i></p>
+			{% endif %}
+
 			<div class="center">
-				<p><a class="link" href="{{ pub.paper_url }}"> <i class="fa fa-file fa-lg"></i> </a> 
+				<p>
+				{% assign sep = '' %}
+				{% if pub.paper_url != nil %}
+					<a class="link" href="{{ pub.paper_url }}"> <i class="fa fa-file fa-lg"></i> </a>
+					{% assign sep = '|' %}
+				{% endif %}
 				{% if pub.code != nil %}
-					| <a class="link" href="{{ pub.code }}"> <i class="fa fa-code fa-lg"></i> </a>
+					{{ sep }} <a class="link" href="{{ pub.code }}"> <i class="fa fa-code fa-lg"></i> </a>
+					{% assign sep = '|' %}
 				{% endif %}
 				{% if pub.poster != nil %}
-					| <a class="link" href="{{ pub.poster }}"> <i class="fa fa-image fa-lg"></i> </a>
+					{{ sep }} <a class="link" href="{{ pub.poster }}"> <i class="fa fa-image fa-lg"></i> </a>
+					{% assign sep = '|' %}
 				{% endif %}
 				{% if pub.video != nil %}
-					| <a class="link" href="{{ pub.video }}"> <i class="fab fa-youtube fa-lg"></i></a> 
+					{{ sep }} <a class="link" href="{{ pub.video }}"> <i class="fab fa-youtube fa-lg"></i></a>
+					{% assign sep = '|' %}
 				{% endif %}
 				{% if pub.blogpost_link != nil %}
-					| <a class="link" href="{{ site.base_url | append: pub.blogpost_link }}"> 
-					  <i class="fa fa-pager fa-lg"></i></a> 
+					{{ sep }} <a class="link" href="{{ site.baseurl | append: pub.blogpost_link }}">
+					  <i class="fa fa-pager fa-lg"></i></a>
 				{% endif %}
 				</p>
 			</div>

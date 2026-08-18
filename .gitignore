@@ -4,4 +4,7 @@ _site
 .jekyll-metadata
 vendor
 
+# private, machine-specific dev notes (see also exclude: in _config.yml)
+LOCAL-DEV.md
+
 *to_post/*

@@ -20,8 +20,8 @@ algorithm for safe robot navigation in social domains. SoRTS aims to augment exi
 motion prediction models for long-horizon navigation using Monte Carlo Tree Search.</p>
 
 <p>We use social navigation in general aviation as a case study to evaluate our approach and further 
-the research in full-scale aerial autonomy. In doing so, we introduce <i>X-PlaneROS</i>, a 
-highfidelity aerial simulator that enables human-robot interaction. We use X-PlaneROS to conduct a 
+research in full-scale aerial autonomy. In doing so, we introduce <i>X-PlaneROS</i>, a 
+high-fidelity aerial simulator that enables human-robot interaction. We use X-PlaneROS to conduct a 
 first-of-its-kind user study where 26 FAA-certified pilots interact with a human pilot, our algorithm, 
 and its ablation. Our results, supported by statistical evidence, show that SoRTS exhibits a comparable 
 performance to competent human pilots, significantly outperforming its ablation. Finally, we complement 

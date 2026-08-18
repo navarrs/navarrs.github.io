@@ -6,7 +6,7 @@ poster: null
 code: null
 video: null
 thumbnail: assets/img/publications/ksaven.gif
-authors: Gyan Tatiya, Jonathan Francis, Luca Bondi, <b class="text-primary">Ingrid Navarro</b> Eric Nyberg, Jivko Sinapov, and Jean Oh
+authors: Gyan Tatiya, Jonathan Francis, Luca Bondi, <b class="text-primary">Ingrid Navarro</b>, Eric Nyberg, Jivko Sinapov, and Jean Oh
 note: null
 where: Preprint in ArXiv, 2022
 id: paper_ksaven
