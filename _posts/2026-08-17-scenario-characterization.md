@@ -62,7 +62,7 @@ coupled to a single dataset's file format, agent taxonomy, sampling rate and map
 means rewriting the feature extractors, the scorers and the analysis code alongside the loader. It also makes
 cross-dataset comparison difficult.
 
-### Our idea
+### Our Idea
 
 We propose **ScenarioCharacterization**, a configuration-driven library that separates *what* is characterized
 from *where the data came from*. The library makes three contributions.

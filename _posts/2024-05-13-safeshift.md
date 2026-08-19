@@ -63,7 +63,7 @@ A motivating example is shown in the figure below, where the yellow vehicle make
   <img width="1280" src="/assets/posts/2024-05-13-safeshift/example.png" alt="SafeShift">
 </p>
 
-### Our idea
+### Our Idea
 We propose **SafeShift**, a framework consisting of: 
 1. A **scenario characterization** approach focused on capturing safety-relevant scenarios naively overlooked in real-world datasets, e.g., near collisions and proactive maneuvers. 
 2. A methodology for **scoring safety-criticality** which utilizes the scenario features from (1) via counterfactual probing to characterize <i>what-if</i> situations.
