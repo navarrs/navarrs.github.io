@@ -88,12 +88,14 @@ bundle exec jekyll serve --livereload
 
 | Path | What it is |
 | --- | --- |
-| [index.md](index.md) | Homepage. Mostly composes the includes below. |
-| [_includes/](_includes/) | `about.html`, `research.html`, `post-card.html` — the homepage sections. |
+| [index.md](index.md) | Homepage: lists the sections below in display order. Its `title` and `subtitle` are the name and role shown in the sidebar. |
+| [_layouts/home.html](_layouts/home.html) | The homepage's two-pane layout: fixed sidebar on the left, scrolling sections on the right. No top navbar. |
+| [_includes/](_includes/) | `sidebar.html` (photo, name, role, links); the homepage sections `about.html`, `updates.html`, `timeline.html` (Experience and Education) and `research.html` (publications); `post-card.html` for the Research Posts page. |
+| [_data/experience.yml](_data/experience.yml), [_data/education.yml](_data/education.yml) | Entries for the Experience and Education sections, newest first. Each can have a square `logo` image from `assets/img/logos/`. |
 | [_publications/](_publications/) | One file per paper. Numeric filename prefix controls display order. |
 | [_posts/](_posts/) | Research blog posts, named `YYYY-MM-DD-slug.md`, rendered with [_layouts/post.html](_layouts/post.html). |
-| [_data/navigation.yml](_data/navigation.yml) | Top navigation links. |
-| [assets/](assets/) | `img/`, `posts/<slug>/` for per-post images, `files/navars.pdf`, and `css/app.scss` (sets `$primary`, then imports the theme's Sass). |
+| [_data/navigation.yml](_data/navigation.yml) | Top navigation links on the other pages. The homepage's links live in `sidebar.html`. |
+| [assets/](assets/) | `img/`, `posts/<slug>/` for per-post images, `files/navars.pdf`, `css/resume.css` (homepage and sidebar styles), and `css/app.scss` (sets `$primary`, then imports the theme's Sass). |
 
 A publication's front matter looks like this — set unused fields to `null` rather than deleting them:
 

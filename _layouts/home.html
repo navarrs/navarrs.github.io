@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- Two-pane homepage: fixed profile sidebar on the left, scrolling sections on the right -->
+<html dir="{{ site.direction | default: 'ltr' }}" lang="{{ site.lang | default: 'en' }}">
+  {% include head.html %}
+  <body>
+    <!-- ?v= changes on every build, so browsers never reuse a stale copy -->
+    <link href="{{ site.baseurl }}/assets/css/resume.css?v={{ site.time | date: '%s' }}" rel="stylesheet">
+
+    <aside class="sidebar">
+      {% include sidebar.html %}
+    </aside>
+
+    <main class="main-pane">
+      <div class="content">
+        {{ content }}
+      </div>
+    </main>
+
+    {%- include footer-scripts.html -%}
+  </body>
+</html>

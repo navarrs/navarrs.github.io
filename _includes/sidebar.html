@@ -1,0 +1,31 @@
+<div class="sidebar-inner">
+    <img class="avatar" src="assets/img/profile-avatar.jpg" alt="{{ page.title }}">
+
+    <h1 class="sidebar-name">{{ page.title }}</h1>
+    <p class="sidebar-role">{{ page.subtitle }}</p>
+
+    <div class="social-icons">
+        <a href="https://www.linkedin.com/in/ingridnavarroan/">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/navarrs">
+            <i class="fab fa-github"></i>
+        </a>
+        {% comment %} CV hidden until the updated PDF is ready; delete these comment tags to show it again.
+        <a href="#resume" onclick="window.open('assets/files/navars.pdf')">
+            <p class="mb-0">cv</p>
+        </a>
+        {% endcomment %}
+    </div>
+
+    <hr class="sidebar-rule">
+
+    <nav class="sidebar-nav">
+        <a href="#about">About</a>
+        <a href="#updates">Updates</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a class="sidebar-nav-page" href="{{ site.baseurl }}/research-posts/">Research Posts</a>
+    </nav>
+</div>

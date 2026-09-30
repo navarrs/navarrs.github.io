@@ -1,0 +1,19 @@
+# Experience section of the homepage, shown in this order (newest first).
+# logo (a square image in assets/img/logos/) and description are optional; description may contain HTML.
+- title: Robotics Research Intern
+  org: Lavoro AI
+  org_url: https://lavoro.bot/
+  logo: assets/img/logos/lavoro.png
+  dates: May 2026
+  description: >-
+    Developed <a href="/controlledshifts/"><i>ControlledShifts</i></a>, a framework and benchmark
+    suite for evaluating the robustness of trajectory prediction under distribution shifts.
+
+- title: ML Research Intern
+  org: Stack AV
+  org_url: https://stackav.com/
+  logo: assets/img/logos/stackav.png
+  dates: May 2025
+  description: >-
+    Developed <a href="/scenario-characterization/"><i>ScenarioCharacterization</i></a>, a
+    modular toolkit for characterizing safety across trajectory datasets.

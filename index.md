@@ -1,17 +1,14 @@
 ---
-layout: page
+layout: home
 title: Ingrid Navarro
-subtitle: PhD Candidate in Robotics at CMU
-hide_footer: true
-hide_hero: false
-hero_height: is-small
-hero_image: /assets/img/background.gif
+subtitle: PhD in Robotics, Carnegie Mellon University
 ---
-<link href="assets/css/resume.css" rel="stylesheet">
-
 {% include about.html %}
 
-<hr>
+{% include updates.html %}
+
+{% include timeline.html id="experience" title="Experience" items=site.data.experience %}
+
+{% include timeline.html id="education" title="Education" items=site.data.education %}
 
 {% include research.html %}
-

@@ -1,5 +1,3 @@
-<link href="assets/css/resume.css" rel="stylesheet">
-
 <script>
 	function show_abstract(x) {
 		var x = document.getElementById(x);
@@ -11,13 +9,12 @@
 	}
 </script>
 
-<div class="container">
-	<h1 class="mb-3">Publications</h1>
-	<br>
+<section id="publications">
+	<h2 class="section-title">Publications</h2>
 
 	{% for pub in site.publications reversed %}
-	<div class="grid-wrapper">
-		<div class="profile center" style="grid-column: span 3; margin:auto;">
+	<div class="pub-item">
+		<div class="profile center">
 			{% if pub.blogpost_link != nil %}
 				<a href="{{ site.baseurl | append: pub.blogpost_link }}">
 					<img src="{{ pub.thumbnail }}">
@@ -27,7 +24,7 @@
 			{% endif %}
 		</div>
 		
-		<div style="grid-column: span 3;">
+		<div>
 			<h4 class="mb-0"> {{ pub.title }} </h4>
 			<br>
 			<p class="blue" style="margin-top:0px; margin-bottom:0px;"> {{ pub.authors }} </p>
@@ -76,4 +73,4 @@
 
 	<hr class="small-rule" />
 	{% endfor %}
-</div>
+</section>

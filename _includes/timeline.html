@@ -1,0 +1,25 @@
+<!-- Dated entries (logo, role/degree, organization, dates, description) from a _data/ file.
+     Takes id, title and items (e.g. site.data.experience); see index.md for usage. -->
+<section id="{{ include.id }}">
+    <h2 class="section-title"> {{ include.title }} </h2>
+
+    {% for item in include.items %}
+    <div class="timeline-item">
+        {% if item.logo %}
+        <img class="timeline-logo" src="{{ item.logo }}" alt="{{ item.org }} logo">
+        {% endif %}
+        <div class="timeline-body">
+            <div class="timeline-header">
+                <p class="mb-0">
+                    <b>{{ item.title }}</b> &middot;
+                    {% if item.org_url %}<a href="{{ item.org_url }}">{{ item.org }}</a>{% else %}{{ item.org }}{% endif %}
+                </p>
+                <span class="timeline-dates">{{ item.dates }}</span>
+            </div>
+            {% if item.description %}
+            <p class="timeline-description">{{ item.description }}</p>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
